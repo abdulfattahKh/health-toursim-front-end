@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="row text-center justify-content-center align-items-center">
+        <div class="col-12">
+            <div class="h1 mt-3 mb-2 align-self-center">sign in</div>
+        </div>
+        <!-- <div class="h3  mb-1 align-self-center">
+            welcome to our website
+        </div> -->
+
+        <!-- <div class="h3  mb-3 align-self-center">
+            signin to see what your friends have posted
+        </div> -->
+        <form class="col-6" [formGroup]="signInForm" (submit)="onSubmit()">
+            <div class="form-group mb-2">
+                <input placeholder="Email" type="email" class="form-control  mb-1" name="email" formControlName="email" />
+
+                <div class="d-flex justify-content-center flex-column">
+                    <span *ngIf="
+              !!signInForm.get('email').errors?.required &&
+              signInForm.get('email').touched
+            " class="h6 warning">
+            email is required
+          </span>
+
+                    <span *ngIf="
+              !!signInForm.get('email').errors?.email &&
+              signInForm.get('email').touched
+            " class="h6 warning">
+            invalid Email
+          </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <input placeholder="Password" type="password" class="form-control  mb-1" name="password" formControlName="password" />
+                <div class="d-flex justify-content-center flex-column">
+                    <span *ngIf="
+              !!signInForm.get('password').errors?.required &&
+              signInForm.get('password').touched
+            " class="h6 warning">
+            password is required
+          </span>
+
+                    <span *ngIf="
+              !!signInForm.get('password').errors?.pattern &&
+              signInForm.get('password').touched
+            " class="h2 warning">
+            it must have at least 8 characters , one letter & one number
+          </span>
+                </div>
+            </div>
+            <div class="mb-2">
+                <a href="">
+                    <span class="h6"> forgot your password </span>
+                </a>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2" [disabled]="!signInForm.valid">
+        <span class="btn__text"> sign in </span>
+      </button>
+        </form>
+        <span *ngIf="signedIn; else fail" [ngClass]="ClassStyle" class="h6">
+      {{ message }}
+    </span>
+
+        <ng-template #fail>
+            <span *ngIf="!signedIn" [ngClass]="ClassStyle" class="h6">
+        {{ message }}
+      </span>
+        </ng-template>
+    </div>
+</div>
