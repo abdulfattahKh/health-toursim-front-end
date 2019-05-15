@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { AuthService } from "../Auth.service";
 import { EventEmitter } from "events";
 import { Router } from "@angular/router";
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: "app-sign-in",
   templateUrl: "./sign-in.component.html",
@@ -18,7 +19,11 @@ export class SignInComponent implements OnInit {
   mediumRegex = new RegExp(
     "^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{8,})"
   );
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private toster: ToastrService
+  ) {
     this.init();
     //this.test();
   }
@@ -33,11 +38,13 @@ export class SignInComponent implements OnInit {
         this.signedIn = true;
         this.ClassStyle = "success";
         this.message = "signed in correctly";
-        this.router.navigate(["/"]);
+        this.toster.success(this.message);
+        this.router.navigate(["dashboard"]);
       } else {
         this.signedIn = false;
         this.ClassStyle = "warning";
         this.message = "either the email or the password is not correct";
+        this.toster.success(this.message);
       }
     });
 

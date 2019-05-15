@@ -8,26 +8,32 @@ import { MySelectComponent } from "./my-select/my-select.component";
 import { NgSelectModule } from "@ng-select/ng-select";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ToastrModule } from "ngx-toastr";
+import { TranslateModule } from '@ngx-translate/core';
+
+const EXPORT_MODULES = [CommonModule,
+  HttpModule,
+  ReactiveFormsModule,
+  FormsModule,
+  HttpModule,
+  NbCardModule,
+  BsDatepickerModule,
+  MySelectComponent,
+  NgSelectModule,
+  TranslateModule]
+
+const IMPORT_MODULES = [CommonModule,
+  HttpModule,
+  NbCardModule,
+  NgSelectModule,
+  FormsModule,
+  ReactiveFormsModule]
 @NgModule({
   declarations: [MySelectComponent],
   imports: [
-    CommonModule,
-    HttpModule,
-    NbCardModule,
-    NgSelectModule,
-    FormsModule,
-    ReactiveFormsModule
+    ...IMPORT_MODULES
   ],
   exports: [
-    CommonModule,
-    HttpModule,
-    ReactiveFormsModule,
-    FormsModule,
-    HttpModule,
-    NbCardModule,
-    BsDatepickerModule,
-    MySelectComponent,
-    NgSelectModule
+    ...EXPORT_MODULES
   ]
 })
-export class UtilitiesModule {}
+export class UtilitiesModule { }

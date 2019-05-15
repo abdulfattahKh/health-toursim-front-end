@@ -55,7 +55,7 @@ export class SignUpComponent implements OnInit {
           this.message = "you are ready to sign in";
           this.Toastr.success(this.message);
           setTimeout(() => {
-            this.routes.navigate(["/signin"]);
+            this.routes.navigate(["/auth/signin"]);
           }, 2000);
         } else {
           this.class = "warning";
