@@ -31,7 +31,7 @@ const routes: Routes = [
     FormsModule
   ],
   exports: [RouterModule],
-  providers: [AuthService]
+  providers: []
 })
 export class AuthModule {
   constructor() { }

@@ -14,8 +14,14 @@ export class privilegesGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state): boolean | Observable<boolean> | Promise<boolean> {
 
-
+    if (!this.privilegesService.promise) {
+      return this.privilegesService.loadMyPrivileges();
+    }
     const privileges = route.routeConfig['data'];
+
+    if (!privileges) {
+      return true;
+    }
     const authored: boolean = this.privilegesService.isAuthorized(privileges);
 
     if (!authored) {

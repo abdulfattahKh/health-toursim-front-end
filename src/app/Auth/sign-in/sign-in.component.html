@@ -4,7 +4,9 @@
       <div class="container">
         <div class="row text-center justify-content-center align-items-center">
           <div class="col-12">
-            <div class="h1 mt-3 mb-2 align-self-center">sign in</div>
+            <div class="h1 mt-3 mb-2 align-self-center">
+              {{ "signIn.signIn" | translate }}
+            </div>
           </div>
           <!-- <div class="h3  mb-1 align-self-center">
             welcome to our website
@@ -31,7 +33,7 @@
                   "
                   class="h6 warning"
                 >
-                  email is required
+                  {{ "validation.emailIsRequired" | translate }}
                 </span>
 
                 <span
@@ -41,7 +43,7 @@
                   "
                   class="h6 warning"
                 >
-                  invalid Email
+                  {{ "validation.invalidEmail" | translate }}
                 </span>
               </div>
             </div>
@@ -61,7 +63,7 @@
                   "
                   class="h6 warning"
                 >
-                  password is required
+                  {{ "validation.passwordIsRequired" | translate }}
                 </span>
 
                 <span
@@ -71,13 +73,15 @@
                   "
                   class="h2 warning"
                 >
-                  it must have at least 8 characters , one letter & one number
+                  {{ "validation.passwordCondtion" | translate }}
                 </span>
               </div>
             </div>
             <div class="mb-2">
               <a href="">
-                <span class="h6"> forgot your password </span>
+                <span class="h6">
+                  {{ "signIn.forgetYouPassword" | translate }}
+                </span>
               </a>
             </div>
             <button
@@ -85,7 +89,9 @@
               class="btn btn-primary mb-2"
               [disabled]="!signInForm.valid"
             >
-              <span class="btn__text"> sign in </span>
+              <span class="btn__text">
+                {{ "signIn.signIn" | translate }}
+              </span>
             </button>
           </form>
         </div>

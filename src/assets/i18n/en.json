@@ -1,0 +1,51 @@
+{
+  "signIn": {
+    "signIn": "sign In",
+    "userName": "user Name",
+    "password": "password",
+    "email": "Email",
+    "forgetYouPassword": "forget your password"
+  },
+  "signUp": {
+    "register": "regsiter",
+    "firstName": "first Name",
+    "lastName": "last Name",
+    "email": "Email",
+    "password": "password",
+    "confirmPassword": "confirm password",
+    "birthday": "birthday",
+    "mobileNumber": "mobile number",
+    "tellUsWhoYouAre": "tell us who you are "
+  },
+  "validation": {
+    "validation": "validation",
+    "emailIsRequired": "email is required",
+    "roleIsRequired": "role is required",
+    "emailIsAlreadyUsed": "email is already used",
+    "passwordIsRequired": "password is required",
+    "ConfirmPasswordIsRequired": "Confirm password is required",
+    "PasswordDoesNotMatch": "Password does not match",
+    "invalidEmail": "invalid Email",
+    "passwordCondtion": "it must have at least 8 characters , one letter & one number",
+    "nameIsRequired": "the first name and last name are required !!",
+    "nameCondtion": "the name should be more than 2 characters and less that 30"
+  },
+  "list": {
+    "dashboard": "Dashboard",
+    "features": "features",
+    "auth": "Authentication",
+    "list": "List",
+    "logIn": "LogIn",
+    "register": "Regsiter",
+    "requestPassword": "Request Password",
+    "resetPassword": "Reset Password",
+    "management": "Management",
+    "roles": "roles",
+    "addRole": "add Role",
+    "deleteRole": "delete Role",
+    "assignPrivilegeToaRole": "assign privilege to a role",
+    "privileges": "Privileges",
+    "addPrivilege": "add Privilege",
+    "deletePrivilege": "delete privilege"
+  }
+}

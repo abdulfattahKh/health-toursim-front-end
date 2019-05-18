@@ -15,7 +15,7 @@ export class AuthService implements OnInit {
   timer: any;
 
   //fillSignIn = new Subject();
-  constructor(private http: Http, private router: Router) {}
+  constructor(private http: Http, private router: Router) { }
 
   getToken() {
     return localStorage.getItem("token");
@@ -55,7 +55,7 @@ export class AuthService implements OnInit {
   }
 
   private link: "localhost:3000/";
-  ngOnInit() {}
+  ngOnInit() { }
 
   signUp(user: User) {
     return this.http.post("http://localhost:3000/auth/signup", user);
@@ -87,6 +87,7 @@ export class AuthService implements OnInit {
         }
       });
   }
+
 
   autoAuth() {
     const info = this.getAuthInformation();
@@ -120,7 +121,7 @@ export class AuthService implements OnInit {
   }
 
   logOut() {
-    this.router.navigate(["/signin"]);
+    this.router.navigate(["/auth/signin"]);
     this.token = null;
     this.clearTheToken();
     this.isAuthenticated = false;
@@ -142,7 +143,6 @@ export class AuthService implements OnInit {
       .get("http://localhost:3000/auth/getAllUsers", { headers: header })
       .subscribe(response => {
         const data = response.json();
-        console.log(data.result[0]);
       });
   }
 }

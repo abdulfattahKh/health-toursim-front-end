@@ -27,6 +27,7 @@ import { MainService } from './services/main.service';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { NotAuthorizedComponent } from './errors/not-authorized/not-authorized.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslationService } from './services/translation.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -54,7 +55,7 @@ const Module = [BrowserAnimationsModule,
   UtilitiesModule]
 
 const Services = [
-  AuthService, DatePipe, AuthGuard, privilegesGuard, PrivilegesService, MainService
+  AuthService, DatePipe, AuthGuard, privilegesGuard, PrivilegesService, MainService, TranslationService
 ]
 
 @NgModule({

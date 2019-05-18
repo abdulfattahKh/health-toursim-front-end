@@ -1,0 +1,51 @@
+{
+  "signIn": {
+    "signIn": "تسجيل الدخول",
+    "userName": "اسم المستخدم",
+    "password": "كلمة السر",
+    "email": "الايميل",
+    "forgetYouPassword": "هل نسيت كلمة السر"
+  },
+  "signUp": {
+    "register": "انشاء حساب",
+    "firstName": "الاسم الأول",
+    "lastName": "الاسم الثاني",
+    "email": "الايميل",
+    "password": "كلمة السر",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "birthday": "تاريخ الميلاد",
+    "mobileNumber": "رقم الهاتف",
+    "tellUsWhoYouAre": "ما هو اختصاصك"
+  },
+  "validation": {
+    "validation": "التحقق",
+    "emailIsRequired": "الايميل مطلوب",
+    "passwordIsRequired": "كلمة السر مطلوبة",
+    "invalidEmail": "الايميل غير صحيح",
+    "passwordCondtion": "يجب انت تحتوي على ثمانية محارف على الاقل",
+    "roleIsRequired": "الاختصاص مطلوب",
+    "emailIsAlreadyUsed": "الايميل مستخدم سابقا",
+    "ConfirmPasswordIsRequired": "تأكيد كلمة المرور مطلوب",
+    "PasswordDoesNotMatch": "كلمتا السر غير متطابقتين",
+    "nameIsRequired": "الاسم الاول والاسم الثاني مطلوبين",
+    "nameCondtion": "الاسم يجب ان يكون مؤلف من محرفين او اكثر"
+  },
+  "list": {
+    "dashboard": "لوحة التحكم",
+    "features": "الخصائص",
+    "auth": "المصادقة",
+    "list": "القائمة",
+    "logIn": "تسجيل الدخول",
+    "register": "إنشاء حساب",
+    "requestPassword": "طلب كلمة المرور",
+    "resetPassword": "استعادة كلمة المرور",
+    "management": "الإدارة",
+    "roles": "الأدوار",
+    "addRole": "إضافة دور",
+    "deleteRole": "حذف دور",
+    "assignPrivilegeToaRole": "إضافة صلاحية الى دور ما",
+    "privileges": "الصلاحيات",
+    "addPrivilege": "إضافة صلاحية",
+    "deletePrivilege": "حذف صلاحية"
+  }
+}

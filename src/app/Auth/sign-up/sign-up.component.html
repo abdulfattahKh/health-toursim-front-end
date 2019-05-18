@@ -3,7 +3,7 @@
     <form [formGroup]="signUpForm" class="from-group">
       <nb-card class="justify-content-center">
         <nb-card-header class="text-center">
-          register
+          {{ "signUp.register" | translate }}
         </nb-card-header>
 
         <nb-card-body>
@@ -12,7 +12,9 @@
             formGroupName="name"
           >
             <div class="col-3">
-              <label for="firstName">first Name</label>
+              <label for="firstName"
+                >{{ "signUp.firstName" | translate }}
+              </label>
               <input
                 type="text"
                 class="form-control form-control-sm"
@@ -20,7 +22,7 @@
               />
             </div>
             <div class="col-3">
-              <label for="lastName">last Name</label>
+              <label for="lastName">{{ "signUp.lastName" | translate }}</label>
               <input
                 type="text"
                 class="form-control form-control-sm"
@@ -43,7 +45,7 @@
                     signUpForm.get('name.lastName').touched)
                 "
                 class="h6 warning mr-2 mb-1"
-                >the first name and last name are required !!
+                >{{ "validation.nameIsRequired" | translate }}
               </span>
 
               <span
@@ -58,14 +60,14 @@
                     signUpForm.get('name.firstName').touched)
                 "
                 class="h6 mr-2"
-                >the name should be more than 2 characters and less that 30
+                >{{ "validation.nameCondtion" | translate }}
               </span>
             </div>
           </div>
 
           <div class="row form-group  justify-content-center text-center">
             <div class="col-6">
-              <label for="email">email</label>
+              <label for="email">{{ "signUp.email" | translate }}</label>
               <input
                 type="email"
                 class="form-control form-control-sm"
@@ -81,7 +83,7 @@
                 "
                 class="h6"
               >
-                email is required
+                {{ "validation.emailIsRequired" | translate }}
               </span>
 
               <span
@@ -91,7 +93,7 @@
                 "
                 class="h6"
               >
-                invalid Email
+                {{ "validation.invalidEmail" | translate }}
               </span>
 
               <span
@@ -101,14 +103,16 @@
                 "
                 class="h6"
               >
-                this email is already used
+                {{ "validation.emailIsAlreadyUsed" | translate }}
               </span>
             </div>
           </div>
           <div class="" formGroupName="Password">
             <div class="row form-group  justify-content-center text-center">
               <div class="col-6">
-                <label for="password">password</label>
+                <label for="password">{{
+                  "signUp.password" | translate
+                }}</label>
                 <input
                   type="password"
                   class="form-control form-control-sm"
@@ -125,7 +129,7 @@
                   "
                   class="h6"
                 >
-                  password is required
+                  {{ "validation.passwordIsRequired" | translate }}
                 </span>
 
                 <span
@@ -135,13 +139,15 @@
                   "
                   class="h6"
                 >
-                  it must have at least 8 characters , one letter & one number
+                  {{ "validation.passwordCondtion" | translate }}
                 </span>
               </div>
             </div>
             <div class="row form-group justify-content-center text-center">
               <div class="col-6">
-                <label for="password">confirm password</label>
+                <label for="password">{{
+                  "signUp.confirmPassword" | translate
+                }}</label>
                 <input
                   type="password"
                   class="form-control form-control-sm"
@@ -159,7 +165,7 @@
                   "
                   class="h6 mb-1"
                 >
-                  Confirm password is required
+                  {{ "validation.ConfirmPasswordIsRequired" | translate }}
                 </span>
 
                 <span
@@ -171,14 +177,14 @@
                   "
                   class="h6"
                 >
-                  Password does not match
+                  {{ "validation.PasswordDoesNotMatch" | translate }}
                 </span>
               </div>
             </div>
           </div>
           <div class="row form-group justify-content-center text-center">
             <div class="col-3">
-              <label for="Birthday">birthday</label>
+              <label for="Birthday">{{ "signUp.birthday" | translate }}</label>
               <input
                 formControlName="birthday"
                 class="form-control"
@@ -188,7 +194,9 @@
               />
             </div>
             <div class="col-3">
-              <label for="mobileNumber">mobile number</label>
+              <label for="mobileNumber">{{
+                "signUp.mobileNumber" | translate
+              }}</label>
               <input
                 type="number"
                 class="form-control form-control-sm"
@@ -199,7 +207,9 @@
 
           <div class="row form-group justify-content-center text-center">
             <div class="col-6">
-              <label for="roles">tell us who you are ? </label>
+              <label for="roles"
+                >{{ "signUp.tellUsWhoYouAre" | translate }}
+              </label>
               <my-select
                 [type]="'api'"
                 [bindLabel]="'name'"
@@ -217,7 +227,7 @@
                 "
                 class="h6"
               >
-                role is required
+                {{ "validation.roleIsRequired" | translate }}
               </span>
             </div>
           </div>
@@ -232,7 +242,7 @@
                 class="btn btn-primary"
                 (click)="onSubmit()"
               >
-                register
+                {{ "signUp.register" | translate }}
               </button>
             </div>
           </div>
