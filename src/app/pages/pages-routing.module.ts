@@ -9,20 +9,30 @@ import { privilegesGuard } from '../guards/privileges.guard';
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
-  canActivate: [AuthGuard],
-  data: ['dashboard'],
+  // canActivate: [AuthGuard],
+  //data: ['dashboard'],
   children: [
     {
       path: 'dashboard',
       component: DashboardComponent,
     },
     {
+      path: 'management',
+      loadChildren: "./managment/managment.module#ManagmentModule"
+    }
+    ,
+    {
       path: '',
       redirectTo: 'dashboard',
       pathMatch: 'full',
     },
+    {
+      path: '**',
+      redirectTo: 'dashboard'
+    },
   ],
-}];
+},
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

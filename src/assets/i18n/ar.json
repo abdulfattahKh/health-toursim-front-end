@@ -47,5 +47,8 @@
     "privileges": "الصلاحيات",
     "addPrivilege": "إضافة صلاحية",
     "deletePrivilege": "حذف صلاحية"
+  },
+  "Management": {
+    "management": "الإدارة"
   }
 }

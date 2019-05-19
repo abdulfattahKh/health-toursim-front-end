@@ -73,8 +73,8 @@
       "check-separator",
       "check-type"
     ],
-    "directive-selector": [false, "attribute", "ngx", "camelCase"],
-    "component-selector": [false, "element", "ngx", "kebab-case"],
+    "directive-selector": [false, "attribute", "camelCase"],
+    "component-selector": [false, "element", "camelCase"],
     "ban": [
       false,
       "eval",

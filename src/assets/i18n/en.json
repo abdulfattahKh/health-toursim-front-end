@@ -47,5 +47,8 @@
     "privileges": "Privileges",
     "addPrivilege": "add Privilege",
     "deletePrivilege": "delete privilege"
+  },
+  "Management": {
+    "management": "Management"
   }
 }
