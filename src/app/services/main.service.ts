@@ -52,6 +52,9 @@ export class MainService {
 
   getFields(name) {
     var fields = {};
+    fields['addRole'] = [
+      // { name: "role_id", type: "selectApi", apiName: "roles/roles", bindLable: "role_id", bindValue: "role_name", label: "role id" }
+    ]
     return fields[name];
   }
 

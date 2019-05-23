@@ -8,6 +8,7 @@ import { ThemeModule } from '../../@theme/theme.module';
 import { RolesTableComponent } from './roles/roles-table-component/roles-table-component.component';
 import { CreateRoleComponent } from './roles/create-role-component/create-role-component.component';
 import { EditRoleComponent } from './roles/edit-role-component/edit-role-component.component';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 const Components = [
 ]
@@ -18,7 +19,8 @@ const Components = [
     RolesComponent,
     RolesTableComponent,
     CreateRoleComponent,
-    EditRoleComponent
+    EditRoleComponent,
+    
   ],
   imports: [
     CommonModule,

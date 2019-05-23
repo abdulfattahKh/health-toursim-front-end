@@ -19,15 +19,14 @@ export class AppComponent implements OnInit {
   constructor(
     // private analytics: AnalyticsService,
     private authService: AuthService,
-    private privilegesService: PrivilegesService,
-    private Translate: TranslateService,
-    private translation: TranslationService
+    private translation: TranslationService,
+    private translate: TranslateService
   ) {
   }
 
   ngOnInit() {
     // this.analytics.trackPageViews();
-    this.authService.autoAuth();
     this.translation.checkLang();
+    this.authService.autoAuth();
   }
 }

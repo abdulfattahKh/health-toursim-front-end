@@ -12,4 +12,10 @@ export class UtiliesService {
       this.baseUrl + url
     );
   }
+
+  getSmartTableData(url) {
+    return this.api.get<{ success: boolean; message: any; data: any }>(
+      this.baseUrl + url
+    );
+  }
 }

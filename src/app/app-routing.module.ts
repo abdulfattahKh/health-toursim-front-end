@@ -3,10 +3,10 @@ import { NgModule } from "@angular/core";
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  { path: "", canActivate: [AuthGuard], loadChildren: "app/pages/pages.module#PagesModule" },
-  { path: "auth", loadChildren: "app/Auth/Auth.module#AuthModule" }
-  // { path: "", redirectTo: "pages/dashboard", pathMatch: "full" },
-  // { path: "**", redirectTo: "pages/dashboard" }
+  { path: "pages", canActivate: [AuthGuard], loadChildren: "app/pages/pages.module#PagesModule" },
+  { path: "auth", loadChildren: "app/Auth/Auth.module#AuthModule" },
+  { path: "", redirectTo: "pages/dashboard", pathMatch: "full" },
+  { path: "**", redirectTo: "pages/dashboard" }
 ];
 
 const config: ExtraOptions = {

@@ -20,16 +20,6 @@ const routes: Routes = [{
       path: 'management',
       loadChildren: "./managment/managment.module#ManagmentModule"
     }
-    ,
-    {
-      path: '',
-      redirectTo: 'dashboard',
-      pathMatch: 'full',
-    },
-    {
-      path: '**',
-      redirectTo: 'dashboard'
-    },
   ],
 },
 ];

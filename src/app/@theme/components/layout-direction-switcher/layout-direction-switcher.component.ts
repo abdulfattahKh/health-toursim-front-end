@@ -24,16 +24,19 @@ export class LayoutDirectionSwitcherComponent implements OnDestroy {
   alive = true;
 
   @Input() vertical: boolean = false;
-
+  lang = localStorage.getItem('lang');
   constructor(
     private directionService: NbLayoutDirectionService,
     private translate: TranslationService
   ) {
-    this.currentDirection = this.directionService.getDirection();
+    // this.currentDirection = this.directionService.getDirection();
 
-    this.directionService.onDirectionChange()
-      .pipe(takeWhile(() => this.alive))
-      .subscribe(newDirection => this.currentDirection = newDirection);
+    // this.directionService.onDirectionChange()
+    //   .pipe(takeWhile(() => this.alive))
+    //   .subscribe(newDirection => this.currentDirection = newDirection);
+    this.lang = localStorage.getItem('lang');
+    let dir = this.lang == 'ar' ? this.directions.RTL : this.directions.LTR;
+    this.directionService.setDirection(dir);
   }
 
   toggleDirection(newDirection) {

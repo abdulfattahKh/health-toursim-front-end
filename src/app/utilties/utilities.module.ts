@@ -9,7 +9,9 @@ import { NgSelectModule } from "@ng-select/ng-select";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ToastrModule } from "ngx-toastr";
 import { TranslateModule } from '@ngx-translate/core';
-
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { MySmartTableComponent } from './my-smart-table/my-smart-table.component';
+import { FormCreatorComponent } from './form-creator/form-creator.component';
 const EXPORT_MODULES = [CommonModule,
   HttpModule,
   ReactiveFormsModule,
@@ -19,16 +21,24 @@ const EXPORT_MODULES = [CommonModule,
   BsDatepickerModule,
   MySelectComponent,
   NgSelectModule,
-  TranslateModule]
+  TranslateModule,
+  Ng2SmartTableModule,
+  MySmartTableComponent,
+  FormCreatorComponent
+]
 
 const IMPORT_MODULES = [CommonModule,
   HttpModule,
   NbCardModule,
   NgSelectModule,
   FormsModule,
-  ReactiveFormsModule]
+  ReactiveFormsModule,
+  Ng2SmartTableModule,
+  BsDatepickerModule,
+  TranslateModule
+]
 @NgModule({
-  declarations: [MySelectComponent],
+  declarations: [MySelectComponent, MySmartTableComponent, FormCreatorComponent],
   imports: [
     ...IMPORT_MODULES
   ],

@@ -1,0 +1,8 @@
+<div *ngIf="loading">
+  <ng2-smart-table
+    [settings]="settings"
+    [source]="dataSource"
+    (rowSelect)="rowSelect($event)"
+    (create)="onCreate($event)"
+  ></ng2-smart-table>
+</div>

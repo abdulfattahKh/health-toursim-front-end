@@ -30,12 +30,12 @@
     "nameIsRequired": "الاسم الاول والاسم الثاني مطلوبين",
     "nameCondtion": "الاسم يجب ان يكون مؤلف من محرفين او اكثر"
   },
-  "list": {
+  "List": {
     "dashboard": "لوحة التحكم",
     "features": "الخصائص",
     "auth": "المصادقة",
     "list": "القائمة",
-    "logIn": "تسجيل الدخول",
+    "login": "تسجيل الدخول",
     "register": "إنشاء حساب",
     "requestPassword": "طلب كلمة المرور",
     "resetPassword": "استعادة كلمة المرور",
@@ -50,5 +50,20 @@
   },
   "Management": {
     "management": "الإدارة"
+  },
+  "Table": {
+    "name": "الإسم",
+    "actions": "اجرائيات"
+  },
+  "formCreator": {
+    "roleName": "اسم الدور",
+    "roleDescription": "توصيف الدور",
+    "privileges": "الصلاحيات"
+  },
+  "Roles": {
+    "addRole": "إضافة دور",
+    "roleName": "اسم الدور",
+    "description": "توصيف الدور",
+    "privileges": "الصلاحيات"
   }
 }

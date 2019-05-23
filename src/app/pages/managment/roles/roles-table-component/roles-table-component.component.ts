@@ -7,9 +7,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RolesTableComponent implements OnInit {
 
+  lang = localStorage.getItem('lang');
+  settings = {
+    mode: "external",
+    attr: {
+      class: "text-center"
+    },
+    add: {
+      addButtonContent: `<button class="btn btn-success"> add </button>`,
+      privilege: ['addRole']
+    },
+    actions: {
+      add: true,
+      position: this.lang == 'ar' ? 'left' : 'right'
+    },
+    columns: {}
+  };
+
   constructor() { };
 
   ngOnInit() {
   }
-
+  rowSelect(event) {
+    console.log(event)
+  }
 }

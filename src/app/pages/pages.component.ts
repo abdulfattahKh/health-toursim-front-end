@@ -43,7 +43,7 @@ export class PagesComponent implements OnInit {
         !list[i].data
         || list[i].data.length == 0
         || this.privilegesService.isAuthorized(list[i]['data']['privilege'])) {
-        list[i].title = this.translate.translateWord(list[i].title);
+        list[i].title = this.translate.translateWord("List." + list[i].title);
         out.push(list[i]);
       }
       if (list[i].children) {

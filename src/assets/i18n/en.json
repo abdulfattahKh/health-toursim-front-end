@@ -30,12 +30,12 @@
     "nameIsRequired": "the first name and last name are required !!",
     "nameCondtion": "the name should be more than 2 characters and less that 30"
   },
-  "list": {
+  "List": {
     "dashboard": "Dashboard",
     "features": "features",
     "auth": "Authentication",
     "list": "List",
-    "logIn": "LogIn",
+    "login": "LogIn",
     "register": "Regsiter",
     "requestPassword": "Request Password",
     "resetPassword": "Reset Password",
@@ -50,5 +50,20 @@
   },
   "Management": {
     "management": "Management"
+  },
+  "Table": {
+    "name": "Name",
+    "actions": "Actions"
+  },
+  "formCreator": {
+    "roleName": "role Name",
+    "roleDescription": "role Description",
+    "privileges": "Privileges"
+  },
+  "Roles": {
+    "addRole": "add Role",
+    "roleName": "role Name",
+    "description": "role Description",
+    "privileges": "Privileges"
   }
 }

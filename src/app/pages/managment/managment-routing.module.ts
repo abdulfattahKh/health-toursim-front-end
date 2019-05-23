@@ -15,20 +15,24 @@ const routes: Routes = [
       {
         path: "roles",
         component: RolesComponent,
-        // children: [
-        //   {
-        //     path: "",
-        //     component: RolesTableComponent
-        //   },
-        //   {
-        //     path: "create",
-        //     component: CreateRoleComponent
-        //   },
-        //   {
-        //     path: "edit/:id",
-        //     component: EditRoleComponent
-        //   },
-        // ]
+        children: [
+          {
+            path: "",
+            component: RolesTableComponent
+          },
+          {
+            path: "create",
+            component: CreateRoleComponent
+          },
+          {
+            path: "edit/:id",
+            component: EditRoleComponent
+          },
+          {
+            path:"**",
+            redirectTo:""
+          }
+        ]
       },
     ]
   },

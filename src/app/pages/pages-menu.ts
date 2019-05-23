@@ -18,7 +18,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'nb-locked',
     children: [
       {
-        title: 'logIn',
+        title: 'login',
         link: '/auth/signin',
       },
       {
@@ -43,7 +43,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'roles',
         icon: "",
-        link: "",
+        link: "management/roles",
         //data: { privilege: ['roles'] },
       },
       {

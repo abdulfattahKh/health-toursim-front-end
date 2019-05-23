@@ -1,3 +1,51 @@
-<p>
-  create-role-component works!
-</p>
+<form class="form-group" [formGroup]="roleForm" (submit)="submit()">
+  <nb-card>
+    <nb-card-header>
+      {{ "Roles.addRole" | translate }}
+    </nb-card-header>
+    <nb-card-body>
+      <div class="row text-center justify-content-center">
+        <div class="col-sm-8 col-md-8 mb-2">
+          <label for="name">{{ "Roles.roleName" | translate }}</label>
+          <input
+            id="name"
+            type="text"
+            class="form-control"
+            formControlName="name"
+          />
+        </div>
+
+        <div class="col-sm-8 col-md-8 mb-2">
+          <label for="description">{{ "Roles.description" | translate }}</label>
+          <input
+            id="description"
+            type="text"
+            class="form-control"
+            formControlName="description"
+          />
+        </div>
+
+        <div class="col-sm-8 col-md-8 mb-2">
+          <label for="name">{{ "Roles.privileges" | translate }}</label>
+          <ng-select
+            [multiple]="true"
+            [items]="privileges"
+            bindLabel="name"
+            bindValue="permission_id"
+            appendTo="body"
+            formControlName="privileges"
+          ></ng-select>
+        </div>
+      </div>
+    </nb-card-body>
+    <nb-card-footer>
+      <div class="row justify-content-center text-center">
+        <div class="col-4">
+          <button class="btn btn-primary">
+            {{ "Roles.addRole" | translate }}
+          </button>
+        </div>
+      </div>
+    </nb-card-footer>
+  </nb-card>
+</form>
