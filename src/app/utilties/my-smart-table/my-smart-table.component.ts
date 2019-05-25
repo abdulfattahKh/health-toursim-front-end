@@ -1,9 +1,15 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, ViewChild } from '@angular/core';
 import { TranslationService } from '../../services/translation.service';
 import { UtiliesService } from "../utilies.service";
 import { PrivilegesService } from '../../services/privileges.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MainService } from '../../services/main.service';
+import { LocalDataSource } from 'ng2-smart-table';
+import { NbDialogService } from '@nebular/theme';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal/public_api';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { promise } from 'selenium-webdriver';
 @Component({
   selector: 'my-smart-table',
   templateUrl: './my-smart-table.component.html',
@@ -11,6 +17,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class MySmartTableComponent implements OnInit {
 
+  @Input('tableName') tableName: string;
   @Input('apiName') apiName: string;
   @Input('settings') settings: any;
   @Input('dataSource') dataSource: any[];
@@ -18,20 +25,30 @@ export class MySmartTableComponent implements OnInit {
   @Input('Hcolumns') columnsToHide: any[];
   @Input('addingUrl') addingUrl: string;
   @Input('deletionUrl') deletionUrl: string;
-  @Input('updateUrl') updateUrl: string;
+  @Input('editingUrl') editingUrl: string;
+
+  @ViewChild('confirmModal') private confirmModal;
+  lang: string;
+  title: string;
   loading: boolean = false;
   actions: any[] = [];
+  source: LocalDataSource;
+  deleteModalRef: BsModalRef;
   constructor(
-    private utiliesService: UtiliesService,
-    private translate: TranslationService,
-    private privilegesService: PrivilegesService,
-    private activatedRoute: ActivatedRoute,
     private router: Router,
-    private tostr: ToastrService
+    private tostr: ToastrService,
+    private modalService: NgbModal,
+    private translate: TranslationService,
+    private utiliesService: UtiliesService,
+    private activatedRoute: ActivatedRoute,
+    private privilegesService: PrivilegesService,
+
+
+    private api: MainService
   ) { }
 
   ngOnInit() {
-
+    this.lang = localStorage.getItem('lang');
     //check privileges status
     // if (!this.settings['add'] ||
     //   !(this.settings['add']['privilege'] && this.canActive(this.settings['add']['privilege']))) {
@@ -85,9 +102,9 @@ export class MySmartTableComponent implements OnInit {
             this.getMyColumns(data['data'][0]);
             this.loading = true;
             this.tostr.success('the data was fetched correctly');
-            console.log(this.settings);
             //}
             this.dataSource = data['data'];
+            this.source = new LocalDataSource(this.dataSource);
           }
         }, err => {
           this.tostr.error('there was an error while feching the data');
@@ -113,6 +130,65 @@ export class MySmartTableComponent implements OnInit {
       this.router.navigate(['create'], { relativeTo: this.activatedRoute });
     }
   }
+
+  onEdit(event) {
+    if (this.editingUrl && this.editingUrl != "") {
+      this.router.navigateByUrl(this.editingUrl);
+    } else {
+      this.router.navigate(['edit/' + event.data['id']], { relativeTo: this.activatedRoute });
+    }
+  }
+
+  onDelete(event) {
+    let URL;
+    if (this.deletionUrl && this.deletionUrl != "") {
+      URL = this.deletionUrl;
+    } else {
+      URL = "delete"
+    }
+    this.title = this.translate.translateWord('Table.confirmDelete');
+    if (this.settings['delete'] && this.settings['delete']['confirm']) {
+
+      this.modalService.open(this.confirmModal, { size: 'sm' }).result
+        .then(res => {
+          if (res) {
+            this.onDeleteConfirmed(URL, event);
+          }
+        })
+        .catch(err => {
+        })
+    } else {
+      this.onDeleteConfirmed(URL, event);
+    }
+  }
+
+  onDeleteConfirmed(URL, event) {
+    this.utiliesService.deleteSmartTableItem(URL, event['data']['id'])
+      .subscribe(data => {
+        if (data.success) {
+          this.source.remove(event.data);
+          this.tostr.success(data.message, "success");
+        } else {
+          this.tostr.error(data.message, "error");
+        }
+      }, err => {
+        this.tostr.error(err, "error");
+      })
+  }
+
+  // openModal(template, size) {
+  //   return new Promise((resolve, reject) => {
+  //     this.modalService.open(template, { size: size }).result.then(res => {
+  //       if (res) {
+  //         resolve(true);
+  //       } else {
+  //         resolve(false);
+  //       }
+  //     }, err => {
+  //       reject();
+  //     });
+  //   })
+  // }
 
   rowSelect() {
 

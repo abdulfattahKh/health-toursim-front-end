@@ -50,7 +50,6 @@ export class CreateRoleComponent implements OnInit {
         } else {
           this.privileges = [];
         }
-        console.log(data['data']);
       }, err => {
         this.tostr.error('there was an error');
       })

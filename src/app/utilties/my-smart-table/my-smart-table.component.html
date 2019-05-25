@@ -1,8 +1,38 @@
 <div *ngIf="loading">
   <ng2-smart-table
     [settings]="settings"
-    [source]="dataSource"
+    [source]="source"
     (rowSelect)="rowSelect($event)"
     (create)="onCreate($event)"
+    (delete)="onDelete($event)"
+    (edit) ="onEdit($event)"
   ></ng2-smart-table>
 </div>
+
+<ng-template #confirmModal let-c="close" let-d="dismiss">
+  <div class="modal-header" [lang]="lang">
+    <h4 class="modal-title">{{ title }}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="!!d()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" [lang]="lang">
+    <p class="form-text">{{ "Table.areYouSure" | translate }}</p>
+  </div>
+  <div class="modal-footer" [lang]="lang">
+    <button
+      type="button"
+      class="btn btn-primary btn-pill btn-sm py-2 px-4 mr-2"
+      (click)="!!c(true)"
+    >
+      {{ "button.yes" | translate }}
+    </button>
+    <button
+      type="button"
+      class="btn btn-secondary btn-pill btn-sm py-2 px-4 mr-2"
+      (click)="!!c(false)"
+    >
+      {{ "button.no" | translate }}
+    </button>
+  </div>
+</ng-template>

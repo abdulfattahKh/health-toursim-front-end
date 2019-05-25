@@ -39,8 +39,9 @@ export class SignInComponent implements OnInit {
         this.ClassStyle = "success";
         this.message = "signed in correctly";
         this.toster.success(this.message);
+
+        // window.location.reload();
         this.router.navigate(["/dashboard"]);
-        window.location.reload();
       } else {
         this.signedIn = false;
         this.ClassStyle = "warning";

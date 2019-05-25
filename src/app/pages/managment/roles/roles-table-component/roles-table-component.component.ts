@@ -14,11 +14,22 @@ export class RolesTableComponent implements OnInit {
       class: "text-center"
     },
     add: {
-      addButtonContent: `<button class="btn btn-success"> add </button>`,
+      addButtonContent: '<i  class="ion-ios-plus-outline"></i>',
       privilege: ['addRole']
+    },
+    delete: {
+      deleteButtonContent:`<i class="nb-trash"></i>`,
+      privilege:['deleteRole'],
+      confirm:true
+    },
+    edit:{
+      editButtonContent:`<i class="nb-edit"></i>`,
+      privilege:['editRole']
     },
     actions: {
       add: true,
+      delete:true,
+      edit:true,
       position: this.lang == 'ar' ? 'left' : 'right'
     },
     columns: {}

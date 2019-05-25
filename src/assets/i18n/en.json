@@ -1,4 +1,9 @@
 {
+  "button": {
+    "yes": "Yes",
+    "no": "No",
+    "save": "Save"
+  },
   "signIn": {
     "signIn": "sign In",
     "userName": "user Name",
@@ -53,7 +58,11 @@
   },
   "Table": {
     "name": "Name",
-    "actions": "Actions"
+    "actions": "Actions",
+    "areYouSure": "Are You Sure",
+    "confirmDelete": "Delete Confirm",
+    "description": "Role Description",
+    "id": "id"
   },
   "formCreator": {
     "roleName": "role Name",
@@ -61,9 +70,10 @@
     "privileges": "Privileges"
   },
   "Roles": {
-    "addRole": "add Role",
-    "roleName": "role Name",
-    "description": "role Description",
-    "privileges": "Privileges"
+    "addRole": "Add Role",
+    "roleName": "Role Name",
+    "description": "Role Description",
+    "privileges": "Privileges",
+    "editRole": "Edit"
   }
 }

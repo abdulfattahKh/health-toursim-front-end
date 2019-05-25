@@ -3,7 +3,7 @@ import { CommonModule } from "@angular/common";
 import { HttpModule } from "@angular/http";
 import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
-import { NbCardModule, NbDatepickerModule } from "@nebular/theme";
+import { NbCardModule, NbDatepickerModule, NbDialogModule, NbSpinnerModule } from "@nebular/theme";
 import { MySelectComponent } from "./my-select/my-select.component";
 import { NgSelectModule } from "@ng-select/ng-select";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -12,6 +12,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { MySmartTableComponent } from './my-smart-table/my-smart-table.component';
 import { FormCreatorComponent } from './form-creator/form-creator.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 const EXPORT_MODULES = [CommonModule,
   HttpModule,
   ReactiveFormsModule,
@@ -24,7 +25,10 @@ const EXPORT_MODULES = [CommonModule,
   TranslateModule,
   Ng2SmartTableModule,
   MySmartTableComponent,
-  FormCreatorComponent
+  FormCreatorComponent,
+  NbDialogModule,
+  ModalModule,
+  NbSpinnerModule
 ]
 
 const IMPORT_MODULES = [CommonModule,
@@ -35,7 +39,10 @@ const IMPORT_MODULES = [CommonModule,
   ReactiveFormsModule,
   Ng2SmartTableModule,
   BsDatepickerModule,
-  TranslateModule
+  TranslateModule,
+  NbSpinnerModule,
+  ModalModule.forRoot(),
+  NbDialogModule.forChild()
 ]
 @NgModule({
   declarations: [MySelectComponent, MySmartTableComponent, FormCreatorComponent],

@@ -18,7 +18,7 @@ import { ThemeModule } from "./@theme/theme.module";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { UtilitiesModule } from "./utilties/utilities.module";
 import { AuthService } from "./Auth/Auth.service";
-import { NbDatepickerModule } from "@nebular/theme";
+import { NbDatepickerModule, NbDialogModule } from "@nebular/theme";
 import { AuthModule } from './Auth/Auth.module';
 import { AuthGuard } from './guards/auth.guard';
 import { privilegesGuard } from './guards/privileges.guard';
@@ -38,9 +38,11 @@ const Module = [BrowserAnimationsModule,
   AppRoutingModule,
 
   NgbModule.forRoot(),
+
   ThemeModule.forRoot(),
   CoreModule.forRoot(),
   ToastrModule.forRoot(), // ToastrModule added
+  NbDialogModule.forRoot(),
   TranslateModule.forRoot({
     loader: {
       provide: TranslateLoader,

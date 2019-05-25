@@ -1,4 +1,8 @@
 <p>
   roles-table-component works!
 </p>
-<my-smart-table [apiName]="'roles/roles'" [settings] = "settings"></my-smart-table>
+<my-smart-table
+  [apiName]="'roles/roles'"
+  [deletionUrl]="'roles/deleteRole'"
+  [settings]="settings"
+></my-smart-table>

@@ -1,4 +1,9 @@
 {
+  "button": {
+    "yes": "نعم",
+    "no": "لا",
+    "save": "حفظ"
+  },
   "signIn": {
     "signIn": "تسجيل الدخول",
     "userName": "اسم المستخدم",
@@ -53,7 +58,11 @@
   },
   "Table": {
     "name": "الإسم",
-    "actions": "اجرائيات"
+    "actions": "اجرائيات",
+    "areYouSure": "هل أنت متأكد",
+    "confirmDelete": "تأكيد الحذف",
+    "description": "توصيف الدور",
+    "id": "الرقم"
   },
   "formCreator": {
     "roleName": "اسم الدور",
@@ -64,6 +73,7 @@
     "addRole": "إضافة دور",
     "roleName": "اسم الدور",
     "description": "توصيف الدور",
-    "privileges": "الصلاحيات"
+    "privileges": "الصلاحيات",
+    "editRole": "تعديل"
   }
 }

@@ -10,6 +10,13 @@ export class RolesService {
   }
 
   addRoleAndPrivileges(data) {
-    return this.api.post('Privileges/addRoleWithPrivileges', data);
+    return this.api.post('roles/addRoleWithPrivileges', data);
+  }
+
+  editRole(type, value) {
+    return this.api.post('roles/editRole?feildName=' + type, value);
+  }
+  getRoleInfo(id) {
+    return this.api.get('roles/role/' + id);
   }
 }
