@@ -13,8 +13,8 @@ export class RolesService {
     return this.api.post('roles/addRoleWithPrivileges', data);
   }
 
-  editRole(type, value) {
-    return this.api.post('roles/editRole?feildName=' + type, value);
+  editRole(roleId, roleName, value) {
+    return this.api.post('roles/editRole', { roleId, name: roleName, value });
   }
   getRoleInfo(id) {
     return this.api.get('roles/role/' + id);

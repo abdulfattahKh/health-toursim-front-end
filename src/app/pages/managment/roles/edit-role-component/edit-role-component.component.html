@@ -18,7 +18,7 @@
               type="text"
               class="form-control"
               formControlName="name"
-              (change)="!!onChange('roleName', roleForm.get('name').value)"
+              (change)="!!onChange('name', roleForm.get('name').value)"
             />
           </div>
 
@@ -31,6 +31,9 @@
               type="text"
               class="form-control"
               formControlName="description"
+              (change)="
+                !!onChange('description', roleForm.get('description').value)
+              "
             />
           </div>
 
@@ -40,9 +43,11 @@
               [multiple]="true"
               [items]="privileges"
               bindLabel="name"
-              bindValue="permission_id"
               appendTo="body"
               formControlName="privileges"
+              (change)="
+                !!onChange('privileges', roleForm.get('privileges').value)
+              "
             ></ng-select>
           </div>
         </div>

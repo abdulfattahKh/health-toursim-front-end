@@ -22,7 +22,7 @@ export class EditRoleComponent implements OnInit {
   loading: boolean;
   privileges: { name: string, privilege_id: number }[];
   roleForm: FormGroup;
-
+  defaultRoles: any[];
   ngOnInit() {
     this.router.params.subscribe(params => {
       this.roleId = params['id'];
@@ -46,20 +46,22 @@ export class EditRoleComponent implements OnInit {
   }
 
   submit() {
-    this.roleService.editRole("all", { ...this.roleForm.value, roleId: this.roleId })
-      .subscribe(data => {
-        if (data['success'] == true) {
-          this.tostr.success('role was added successfuly');
-        } else {
-          this.tostr.error('there was an error');
-        }
-      }, err => {
-        this.tostr.error('there was an error');
-      })
+    // this.roleService.editRole("all", { ...this.roleForm.value, roleId: this.roleId })
+    //   .subscribe(data => {
+    //     if (data['success'] == true) {
+    //       this.tostr.success('role was added successfuly');
+    //     } else {
+    //       this.tostr.error('there was an error');
+    //     }
+    //   }, err => {
+    //     this.tostr.error('there was an error');
+    //   })
   }
 
   onChange(type, value) {
-    this.roleService.editRole(type, value)
+    if (!this.roleForm.get(type).valid)
+      return;
+    this.roleService.editRole(this.roleId, type, value)
       .subscribe(data => {
         if (data['success']) {
           this.tostr.success(data['message'], "success");
@@ -79,12 +81,23 @@ export class EditRoleComponent implements OnInit {
       privileges: new FormControl(null, [Validators.required, Validators.minLength(3)])
     })
     this.privileges = [];
-    this.mainService.get('privileges/privilegeByRoleId/' + this.roleId)
+    this.mainService.get('privileges/getAllPrivileges/')
       .subscribe(data => {
         if (data['success']) {
           this.privileges = data['data'];
         } else {
           this.privileges = [];
+        }
+      }, err => {
+        this.tostr.error(err['message']);
+      })
+
+    this.mainService.get('privileges/privilegeByRoleId/' + this.roleId)
+      .subscribe(data => {
+        if (data['success']) {
+          this.roleForm.get('privileges').setValue(data['data']);
+          this.roleForm.get('privileges').updateValueAndValidity();
+        } else {
         }
       }, err => {
         this.tostr.error(err['message']);
