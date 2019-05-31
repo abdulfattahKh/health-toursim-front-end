@@ -1,16 +1,17 @@
 <nb-card *ngIf="display">
   <nb-card-header>
-    <h5 class="font-weight-bold text-center">{{ proccessType }}</h5>
+    <h5 class="font-weight-bold text-center">{{ title }}</h5>
   </nb-card-header>
   <form class="formGroup" [formGroup]="Form" (submit)="onSubmit()">
     <nb-card-body>
       <div class="row text-center justify-content-center">
-        <div *ngFor="let item of items" [ngClass]="!!item.colClasses">
+        <div *ngFor="let item of items" [ngClass]="item.colClasses">
           <div [ngSwitch]="item.type">
             <div *ngSwitchCase="'text'">
               <h6 class="font-weight-bold">{{ item.label }}</h6>
               <input
                 [ngStyle]="!!item.customStyle"
+                [ngClass]="item.inputClasses"
                 [id]="item.name"
                 [type]="item.type"
                 class="form-control"
@@ -22,6 +23,7 @@
               <h6 class="font-weight-bold">{{ item.label }}</h6>
               <input
                 [ngStyle]="!!item.customStyle"
+                [ngClass]="item.inputClasses"
                 [id]="item.name"
                 [type]="item.type"
                 class="form-control"
@@ -31,21 +33,28 @@
 
             <div *ngSwitchCase="'selectApi'">
               <h6 class="font-weight-bold">{{ item.label }}</h6>
-              <ng-select
+              <!-- <ng-select
                 class="custom"
                 [id]="item.name"
                 [items]="!!item.items"
-                [bindLabel]="!!item.bindLabel"
-                [bindValue]="!!item.bindValue"
+                bindLabel="!!item.bindLabel"
+                bindValue="!!item.bindValue"
                 [formControlName]="item.name"
               >
-              </ng-select>
+              </ng-select> -->
+              <my-select
+                [type]="'api'"
+                [bindLabel]="item.bindLabel"
+                [apiName]="'roles/roles'"
+                [formControlName]="item.name"
+              ></my-select>
             </div>
 
             <div *ngSwitchCase="'textarea'">
               <h6 class="font-weight-bold">{{ item.label }}</h6>
               <textarea
                 [ngStyle]="!!item.customStyle"
+                [ngClass]="item.inputClasses"
                 class="form-control"
                 [placeholder]="item.name"
                 [formControlName]="item.name"
@@ -57,11 +66,24 @@
               <h6 class="font-weight-bold">{{ item.label }}</h6>
               <input
                 [ngStyle]="!!item.customStyle"
+                [ngClass]="item.inputClasses"
                 [formControlName]="item.name"
                 class="form-control"
                 #dpYMD="bsDatepicker"
                 bsDatepicker
                 [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+              />
+            </div>
+
+            <div *ngSwitchDefault>
+              <h6 class="font-weight-bold">{{ item.label }}</h6>
+              <input
+                [ngStyle]="!!item.customStyle"
+                [ngClass]="item.inputClasses"
+                [id]="item.name"
+                [type]="item.type"
+                class="form-control"
+                [formControlName]="item.name"
               />
             </div>
 
@@ -83,8 +105,7 @@
       <div class="row justify-content-center">
         <div class="col-4 text-center">
           <button type="submit" nbButton status="primary" size="small">
-            <!-- [disabled]="!Form.valid" -->
-            {{ "signIn.signin" | translate }}
+            {{ "button.save" | translate }}
           </button>
         </div>
       </div>

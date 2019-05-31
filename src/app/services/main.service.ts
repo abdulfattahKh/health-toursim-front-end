@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "../../environments/environment";
+import { Validators, FormControl } from '@angular/forms';
+import { AuthService } from '../Auth/Auth.service';
 
 
 
@@ -8,7 +10,10 @@ import { environment } from "../../environments/environment";
 export class MainService {
   api = environment.api;
   header = new HttpHeaders();
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private AuthService: AuthService
+  ) {
 
   }
 
@@ -50,13 +55,8 @@ export class MainService {
     return this.http.delete<{ success: boolean, errorCode: number, message: string }>(this.api + name + '\\' + id, { headers: this.header });
   }
 
-  getFields(name) {
-    var fields = {};
-    fields['addRole'] = [
-      // { name: "role_id", type: "selectApi", apiName: "roles/roles", bindLable: "role_id", bindValue: "role_name", label: "role id" }
-    ]
-    return fields[name];
-  }
+
+
 
   getSettings() {
 

@@ -33,7 +33,8 @@
     "invalidEmail": "invalid Email",
     "passwordCondtion": "it must have at least 8 characters , one letter & one number",
     "nameIsRequired": "the first name and last name are required !!",
-    "nameCondtion": "the name should be more than 2 characters and less that 30"
+    "nameCondtion": "the name should be more than 2 characters and less that 30",
+    "fieldIsRequried": "field Is Requried"
   },
   "List": {
     "dashboard": "Dashboard",
@@ -51,7 +52,8 @@
     "assignPrivilegeToaRole": "assign privilege to a role",
     "privileges": "Privileges",
     "addPrivilege": "add Privilege",
-    "deletePrivilege": "delete privilege"
+    "deletePrivilege": "delete privilege",
+    "users": "users"
   },
   "Management": {
     "management": "Management"
@@ -62,7 +64,13 @@
     "areYouSure": "Are You Sure",
     "confirmDelete": "Delete Confirm",
     "description": "Role Description",
-    "id": "id"
+    "id": "id",
+    "firstname": "firstName",
+    "lastname": "lastName",
+    "email": "email",
+    "gender": "gender",
+    "birthday": "birthday",
+    "mobilenumber": "mobile Number"
   },
   "formCreator": {
     "roleName": "role Name",
@@ -75,5 +83,23 @@
     "description": "Role Description",
     "privileges": "Privileges",
     "editRole": "Edit"
-  }
+  },
+  "name": "Name",
+  "actions": "Actions",
+  "areYouSure": "Are You Sure",
+  "confirmDelete": "Delete Confirm",
+  "description": "Role Description",
+  "id": "id",
+  "firstname": "firstName",
+  "lastname": "lastName",
+  "email": "email",
+  "gender": "gender",
+  "birthday": "birthday",
+  "mobilenumber": "mobile Number",
+  "confirmpassword": "confirm password",
+  "password": "password",
+  "rolename": "role Name",
+  "edituser": "Edit User information",
+  "adduser": " Add User",
+  "users": "users"
 }

@@ -44,6 +44,7 @@ export class SignUpComponent implements OnInit {
     this.init();
   }
   onSubmit() {
+    console.log(this.signUpForm);
     this.user = new User(this.signUpForm.value);
     this.AuthService.signUp(this.user).subscribe(
       data => {

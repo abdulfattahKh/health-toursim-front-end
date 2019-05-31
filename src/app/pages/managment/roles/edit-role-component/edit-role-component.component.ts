@@ -95,6 +95,7 @@ export class EditRoleComponent implements OnInit {
     this.mainService.get('privileges/privilegeByRoleId/' + this.roleId)
       .subscribe(data => {
         if (data['success']) {
+          console.log(data['data'])
           this.roleForm.get('privileges').setValue(data['data']);
           this.roleForm.get('privileges').updateValueAndValidity();
         } else {

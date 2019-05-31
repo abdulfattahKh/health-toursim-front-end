@@ -33,7 +33,8 @@
     "ConfirmPasswordIsRequired": "تأكيد كلمة المرور مطلوب",
     "PasswordDoesNotMatch": "كلمتا السر غير متطابقتين",
     "nameIsRequired": "الاسم الاول والاسم الثاني مطلوبين",
-    "nameCondtion": "الاسم يجب ان يكون مؤلف من محرفين او اكثر"
+    "nameCondtion": "الاسم يجب ان يكون مؤلف من محرفين او اكثر",
+    "fieldIsRequried": "الحقل مطلوب"
   },
   "List": {
     "dashboard": "لوحة التحكم",
@@ -51,7 +52,8 @@
     "assignPrivilegeToaRole": "إضافة صلاحية الى دور ما",
     "privileges": "الصلاحيات",
     "addPrivilege": "إضافة صلاحية",
-    "deletePrivilege": "حذف صلاحية"
+    "deletePrivilege": "حذف صلاحية",
+    "users": "المستخدمين"
   },
   "Management": {
     "management": "الإدارة"
@@ -62,7 +64,13 @@
     "areYouSure": "هل أنت متأكد",
     "confirmDelete": "تأكيد الحذف",
     "description": "توصيف الدور",
-    "id": "الرقم"
+    "id": "الرقم",
+    "firstname": "الاسم الاول",
+    "lastname": "الاسم الثاني",
+    "email": "الايميل",
+    "gender": "الجنس",
+    "birthday": "تاريخ الميلاد",
+    "mobilenumber": "رقم الهاتف"
   },
   "formCreator": {
     "roleName": "اسم الدور",
@@ -75,5 +83,24 @@
     "description": "توصيف الدور",
     "privileges": "الصلاحيات",
     "editRole": "تعديل"
-  }
+  },
+
+  "name": "الإسم",
+  "actions": "اجرائيات",
+  "areYouSure": "هل أنت متأكد",
+  "confirmDelete": "تأكيد الحذف",
+  "description": "توصيف الدور",
+  "id": "الرقم",
+  "firstname": "الاسم الاول",
+  "lastname": "الاسم الثاني",
+  "email": "الايميل",
+  "gender": "الجنس",
+  "birthday": "تاريخ الميلاد",
+  "mobilenumber": "رقم الهاتف",
+  "confirmpassword": "تأكيد كلمة المرور",
+  "password": "كلمة السر",
+  "rolename": "اسم الدور",
+  "edituser": "تعديل معلومات المستخدم",
+  "adduser": "إضافة مستخدم",
+  "users": "المستخدمين"
 }

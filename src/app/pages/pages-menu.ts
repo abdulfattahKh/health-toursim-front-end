@@ -47,6 +47,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
         //data: { privilege: ['roles'] },
       },
       {
+        title: 'users',
+        icon: "",
+        link: "management/users",
+        //data: { privilege: ['users'] },
+      },
+      {
         title: 'privileges',
         icon: "",
         link: "",

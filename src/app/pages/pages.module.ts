@@ -23,6 +23,8 @@ const PAGES_COMPONENTS = [
   declarations: [
     ...PAGES_COMPONENTS,
   ],
+  providers:[
+  ]
 })
 export class PagesModule {
 }

@@ -22,10 +22,11 @@ export class MySelectComponent implements OnInit, ControlValueAccessor {
   @Input("apiName") apiName: string;
   @Input("items") items: any[];
   @Input("type") type: string;
+
   @Input("bindLabel") bindLabel: any;
   @Input("bindValue") bindValue: any;
   selectItems: any[];
-  selectedItem: any;
+  @Input() selectedItem: any;
   constructor(
     private utilityService: UtiliesService,
     private ToastrService: ToastrService

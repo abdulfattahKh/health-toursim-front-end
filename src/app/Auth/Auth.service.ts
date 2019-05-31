@@ -126,6 +126,7 @@ export class AuthService implements OnInit {
     this.clearTheToken();
     this.isAuthenticated = false;
     clearTimeout(this.timer);
+    window.location.reload();
     this.SignIn.next(false);
     this.userId = null;
     this.user = null;

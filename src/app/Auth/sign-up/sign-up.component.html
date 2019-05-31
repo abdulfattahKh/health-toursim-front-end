@@ -213,7 +213,7 @@
               <my-select
                 [type]="'api'"
                 [bindLabel]="'name'"
-                [bindValue]="'role_id'"
+                [bindValue]="'id'"
                 [apiName]="'roles/roles'"
                 formControlName="role"
               ></my-select>
@@ -237,7 +237,7 @@
           <div class="row justify-content-center">
             <div class="col-sm-6 text-center">
               <button
-                [disabled]="!signUpForm.valid"
+              [disabled]="!signUpForm.valid"
                 type="button"
                 class="btn btn-primary"
                 (click)="onSubmit()"

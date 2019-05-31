@@ -97,7 +97,7 @@ export class MySmartTableComponent implements OnInit {
       this.loading = false;
       this.utiliesService.getSmartTableData(this.apiName)
         .subscribe(data => {
-          if (data.success) {
+          if (data['success']) {
             // if(!this.settings.columns) {
             this.getMyColumns(data['data'][0]);
             this.loading = true;

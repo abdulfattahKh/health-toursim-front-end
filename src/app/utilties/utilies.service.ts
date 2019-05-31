@@ -18,9 +18,9 @@ export class UtiliesService {
   }
 
   getSmartTableData(url) {
-    return this.api.get<{ success: boolean; message: any; data: any }>(
-      this.baseUrl + url
-    );
+    // return this.api.get<{ success: boolean; message: any; data: any }>(
+    //   this.baseUrl + url
+    return this.mainService.get(url);
   }
 
   deleteSmartTableItem(url: string, id: number) {
