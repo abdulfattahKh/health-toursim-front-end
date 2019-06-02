@@ -101,5 +101,9 @@
   "rolename": "role Name",
   "edituser": "Edit User information",
   "adduser": " Add User",
-  "users": "users"
+  "users": "users",
+  "privileges": "Privileges",
+  "permission_id": "permission id",
+  "privilegename": "privilege Name",
+  "addprivileges": "add privilege"
 }

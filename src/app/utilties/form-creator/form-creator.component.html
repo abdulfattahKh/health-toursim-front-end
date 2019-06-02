@@ -16,6 +16,7 @@
                 [type]="item.type"
                 class="form-control"
                 [formControlName]="item.name"
+                (change)="!!onChange(item.name)"
               />
             </div>
 
@@ -28,6 +29,7 @@
                 [type]="item.type"
                 class="form-control"
                 [formControlName]="item.name"
+                (change)="!!onChange(item.name)"
               />
             </div>
 
@@ -47,6 +49,7 @@
                 [bindLabel]="item.bindLabel"
                 [apiName]="'roles/roles'"
                 [formControlName]="item.name"
+                (ngModelChange)="!!onChange(item.name,'selectApi')"
               ></my-select>
             </div>
 
@@ -59,6 +62,7 @@
                 [placeholder]="item.name"
                 [formControlName]="item.name"
                 rows="5"
+                (change)="!!onChange(item.name)"
               ></textarea>
             </div>
 
@@ -72,6 +76,7 @@
                 #dpYMD="bsDatepicker"
                 bsDatepicker
                 [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+                (ngModelChange)="!!onChange(item.name,'date')"
               />
             </div>
 
@@ -84,6 +89,7 @@
                 [type]="item.type"
                 class="form-control"
                 [formControlName]="item.name"
+                (change)="!!onChange(item.name)"
               />
             </div>
 
@@ -102,9 +108,15 @@
       </div>
     </nb-card-body>
     <nb-card-footer>
-      <div class="row justify-content-center">
+      <div class="row justify-content-center" *ngIf="creatingForm || !updateInternally">
         <div class="col-4 text-center">
-          <button type="submit" nbButton status="primary" size="small">
+          <button
+            type="submit"
+            nbButton
+            status="primary"
+            size="small"
+            [disabled]="!Form.valid"
+          >
             {{ "button.save" | translate }}
           </button>
         </div>

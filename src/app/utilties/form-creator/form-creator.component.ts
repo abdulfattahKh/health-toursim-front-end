@@ -1,18 +1,17 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TranslationService } from '../../services/translation.service';
-import { MainService } from '../../services/main.service';
-import { Route, Router, ActivatedRoute } from '@angular/router';
-import { UtiliesService } from '../utilies.service';
+import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { FormCreatorService } from './form-creator.service';
 import { FieldsService } from '../../services/fields.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'form-creator',
   templateUrl: './form-creator.component.html',
   styleUrls: ['./form-creator.component.scss'],
-  providers: [FormCreatorService]
+  providers: [FormCreatorService, DatePipe]
 })
 export class FormCreatorComponent implements OnInit {
 
@@ -21,8 +20,14 @@ export class FormCreatorComponent implements OnInit {
   @Input() items: any;
   @Input() title: string;
   @Input() apiName: string;
+  @Input() addingApi: string;
   @Input() fieldIndex: string;
   @Input() updatingApi: string;
+  @Input() columnNameToSave: string;
+  @Input() updateInternally: boolean;
+  @Input() updatingValueApiTo: string;
+  @Input() addInternally: boolean = true;
+
   @Output("onSubmit") submit = new EventEmitter();
   lang: string;
   validators;
@@ -35,17 +40,17 @@ export class FormCreatorComponent implements OnInit {
   creatingForm: boolean = false;
   constructor(
 
-
-    private api: MainService,
+    private datePipe: DatePipe,
     private tostr: ToastrService,
     private Route: ActivatedRoute,
     private fieldService: FieldsService,
     private translate: TranslationService,
-    private utiliesService: UtiliesService,
     private FormCreatorService: FormCreatorService,
-
   ) { }
   ngOnInit() {
+
+    this.items = this.fieldService.getFields(this.fieldIndex);
+    this.lang = localStorage.getItem('lang');
     this.Route.params.subscribe(param => {
       this.id = param['id'];
       if (this.id) {
@@ -58,9 +63,6 @@ export class FormCreatorComponent implements OnInit {
         this.initForm();
       }
     })
-    this.items = this.fieldService.getFields(this.fieldIndex);
-    this.lang = localStorage.getItem('lang');
-
   }
 
   initForm() {
@@ -117,17 +119,62 @@ export class FormCreatorComponent implements OnInit {
   //   })
   // }
 
-  onChange(type, value) {
-    if (this.Form.get(type).invalid || !this.updatingForm) {
+  onChange(field, type = "") {
+    if (this.Form.get(field).invalid || !this.updatingForm || !this.updateInternally) {
       return;
     }
 
+    let value;
+    value = this.Form.get(field).value;
+    if (type == 'selectApi') {
+      value = this.Form.get(field).value['id'];
+    }
+    if (type == 'date') {
+      value = this.datePipe.transform(value, 'yyyy-MM-dd');
+    }
+    this.FormCreatorService.saveValues(
+      this.updatingValueApiTo,
+      {
+        fieldName: field,
+        columnName: this.columnNameToSave,
+        [this.columnNameToSave]: this.id,
+        tableName: this.fieldIndex,
+        value
+      }
+    )
+      .subscribe(data => {
+        if (data['success']) {
+          this.tostr.success(data['message'], 'success');
+        } else {
+          this.tostr.error(data['message'], 'error');
+        }
+      }, err => {
+        this.tostr.error(err['message'], 'error');
+      });
   }
 
   onSubmit() {
-    this.submit.emit(this.Form.value);
-    console.log(this.Form);
+    if (this.addInternally) {
+      this.addValues();
+    } else {
+      this.submit.emit(this.Form.value);
+    }
     //this.Form.reset();
   }
+
+
+  addValues() {
+    this.FormCreatorService.addValues(this.addingApi, this.Form.value)
+      .subscribe(data => {
+        if (data['success']) {
+          this.tostr.success(data['message'], 'success');
+        } else {
+          this.tostr.error(data['message'], 'error');
+        }
+      }, err => {
+        this.tostr.error(err['message'], 'error');
+      });
+  }
+
 
 }

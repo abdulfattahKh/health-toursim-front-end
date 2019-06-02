@@ -55,7 +55,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'privileges',
         icon: "",
-        link: "",
+        link: "management/privileges",
         //data: { privilege: ['privileges'] },
       }
     ]

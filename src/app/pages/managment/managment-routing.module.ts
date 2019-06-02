@@ -9,6 +9,9 @@ import { EditRoleComponent } from './roles/edit-role-component/edit-role-compone
 import { UsersComponent } from './users/users.component';
 import { UsersTableComponent } from './users/users-table/users-table.component';
 import { UsersFormComponent } from './users/users-form/users-form.component';
+import { PrivilegesTableComponent } from './privileges/privileges-table/privileges-table.component';
+import { PrivilegesFormComponent } from './privileges/privileges-form/privileges-form.component';
+import { PrivilegesComponent } from './privileges/privileges.component';
 
 const routes: Routes = [
   {
@@ -52,6 +55,28 @@ const routes: Routes = [
           {
             path: "edit/:id",
             component: UsersFormComponent
+          },
+          {
+            path: "**",
+            redirectTo: ""
+          }
+        ]
+      },
+      {
+        path: "privileges",
+        component: PrivilegesComponent,
+        children: [
+          {
+            path: "",
+            component: PrivilegesTableComponent
+          },
+          {
+            path: "create",
+            component: PrivilegesFormComponent
+          },
+          {
+            path: "edit/:id",
+            component: PrivilegesFormComponent
           },
           {
             path: "**",

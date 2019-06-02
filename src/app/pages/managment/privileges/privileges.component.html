@@ -1,3 +1,9 @@
-<p>
-  privileges works!
-</p>
+<nb-card>
+  <nb-card-header>
+    {{ "privileges" | translate }}
+  </nb-card-header>
+
+  <nb-card-body class="mainCard">
+    <router-outlet></router-outlet>
+  </nb-card-body>
+</nb-card>
