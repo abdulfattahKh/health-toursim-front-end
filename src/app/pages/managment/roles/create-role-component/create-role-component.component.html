@@ -31,7 +31,7 @@
             [multiple]="true"
             [items]="privileges"
             bindLabel="name"
-            bindValue="permission_id"
+            bindValue="id"
             appendTo="body"
             formControlName="privileges"
           ></ng-select>
@@ -41,7 +41,7 @@
     <nb-card-footer>
       <div class="row justify-content-center text-center">
         <div class="col-4">
-          <button class="btn btn-primary">
+          <button class="btn btn-primary" [disabled]="!roleForm.valid">
             {{ "Roles.addRole" | translate }}
           </button>
         </div>

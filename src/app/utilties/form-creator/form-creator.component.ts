@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TranslationService } from '../../services/translation.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { FormCreatorService } from './form-creator.service';
 import { FieldsService } from '../../services/fields.service';
@@ -21,6 +21,7 @@ export class FormCreatorComponent implements OnInit {
   @Input() title: string;
   @Input() apiName: string;
   @Input() addingApi: string;
+  @Input() navigateTo: string;
   @Input() fieldIndex: string;
   @Input() updatingApi: string;
   @Input() columnNameToSave: string;
@@ -43,6 +44,7 @@ export class FormCreatorComponent implements OnInit {
     private datePipe: DatePipe,
     private tostr: ToastrService,
     private Route: ActivatedRoute,
+    private router: Router,
     private fieldService: FieldsService,
     private translate: TranslationService,
     private FormCreatorService: FormCreatorService,
@@ -120,7 +122,8 @@ export class FormCreatorComponent implements OnInit {
   // }
 
   onChange(field, type = "") {
-    if (this.Form.get(field).invalid || !this.updatingForm || !this.updateInternally) {
+
+    if (this.Form.get(field).invalid || !this.updatingForm) {
       return;
     }
 
@@ -168,6 +171,11 @@ export class FormCreatorComponent implements OnInit {
       .subscribe(data => {
         if (data['success']) {
           this.tostr.success(data['message'], 'success');
+          if (this.navigateTo != "" && this.navigateTo) {
+            this.router.navigateByUrl(this.navigateTo);
+          } else {
+            this.router.navigate(['../'], { relativeTo: this.Route });
+          }
         } else {
           this.tostr.error(data['message'], 'error');
         }

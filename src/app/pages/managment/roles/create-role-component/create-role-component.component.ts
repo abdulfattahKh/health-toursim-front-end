@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validator, Validators } from '@angular/forms';
 import { MainService } from '../../../../services/main.service';
 import { ToastrService } from 'ngx-toastr';
 import { RolesService } from '../roles.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'CreateRoleComponent',
@@ -14,7 +15,9 @@ export class CreateRoleComponent implements OnInit {
   constructor(
     private mainService: MainService,
     private tostr: ToastrService,
-    private roleService: RolesService
+    private roleService: RolesService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) { };
   items: any;
   privileges: { name: string, privilege_id: number }[];
@@ -29,6 +32,7 @@ export class CreateRoleComponent implements OnInit {
       .subscribe(data => {
         if (data['success'] == true) {
           this.tostr.success('role was added successfuly');
+          this.router.navigate(["../"], { relativeTo: this.activatedRoute })
         } else {
           this.tostr.error('there was an error');
         }

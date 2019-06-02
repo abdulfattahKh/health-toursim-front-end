@@ -34,7 +34,6 @@ export class EditRoleComponent implements OnInit {
     this.roleService.getRoleInfo(this.roleId).subscribe(data => {
       if (data['success']) {
         this.init(data['data'][0]);
-        this.loading = false;
         this.tostr.success('data was fetched correctlty', 'success');
       } else {
         this.loading = false;
@@ -46,16 +45,6 @@ export class EditRoleComponent implements OnInit {
   }
 
   submit() {
-    // this.roleService.editRole("all", { ...this.roleForm.value, roleId: this.roleId })
-    //   .subscribe(data => {
-    //     if (data['success'] == true) {
-    //       this.tostr.success('role was added successfuly');
-    //     } else {
-    //       this.tostr.error('there was an error');
-    //     }
-    //   }, err => {
-    //     this.tostr.error('there was an error');
-    //   })
   }
 
   onChange(type, value) {
@@ -75,11 +64,30 @@ export class EditRoleComponent implements OnInit {
   }
 
   init(data) {
-    this.roleForm = new FormGroup({
-      name: new FormControl(data['name'], [Validators.required, Validators.minLength(3)]),
-      description: new FormControl(data['description'], [Validators.required, Validators.minLength(3)]),
-      privileges: new FormControl(null, [Validators.required, Validators.minLength(3)])
-    })
+    this.mainService.get('privileges/privilegeByRoleId/' + this.roleId)
+      .subscribe(privileges => {
+        if (privileges['success']) {
+          console.log(privileges['data'])
+          // this.roleForm.get('privileges').setValue(data['data']);
+          // this.roleForm.get('privileges').updateValueAndValidity();
+          this.roleForm = new FormGroup({
+            name: new FormControl(data['name'], [Validators.required, Validators.minLength(3)]),
+            description: new FormControl(data['description']),
+            privileges: new FormControl(privileges['data'])
+          })
+          this.loading = false;
+        } else {
+        }
+      }, err => {
+        this.tostr.error(err['message']);
+      })
+
+
+
+
+
+
+
     this.privileges = [];
     this.mainService.get('privileges/getAllPrivileges/')
       .subscribe(data => {
@@ -87,18 +95,6 @@ export class EditRoleComponent implements OnInit {
           this.privileges = data['data'];
         } else {
           this.privileges = [];
-        }
-      }, err => {
-        this.tostr.error(err['message']);
-      })
-
-    this.mainService.get('privileges/privilegeByRoleId/' + this.roleId)
-      .subscribe(data => {
-        if (data['success']) {
-          console.log(data['data'])
-          this.roleForm.get('privileges').setValue(data['data']);
-          this.roleForm.get('privileges').updateValueAndValidity();
-        } else {
         }
       }, err => {
         this.tostr.error(err['message']);
