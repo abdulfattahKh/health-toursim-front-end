@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
   constructor(
     // private analytics: AnalyticsService,
     private authService: AuthService,
+    private privilegeService: PrivilegesService,
     private translation: TranslationService,
     private translate: TranslateService
   ) {

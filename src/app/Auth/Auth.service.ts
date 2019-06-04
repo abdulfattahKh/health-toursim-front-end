@@ -102,6 +102,7 @@ export class AuthService implements OnInit {
       this.user = info.user;
       this.userId = info.user.id;
       this.isAuthenticated = true;
+      // this.router.navigateByUrl('pages/dashboard');
       this.SignIn.next(true);
     }
   }

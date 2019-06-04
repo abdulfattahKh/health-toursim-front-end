@@ -4,6 +4,7 @@ import { AuthService } from "../Auth.service";
 import { EventEmitter } from "events";
 import { Router } from "@angular/router";
 import { ToastrService } from 'ngx-toastr';
+import { PrivilegesService } from '../../services/privileges.service';
 @Component({
   selector: "app-sign-in",
   templateUrl: "./sign-in.component.html",
@@ -22,7 +23,8 @@ export class SignInComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private toster: ToastrService
+    private toster: ToastrService,
+    private privilegeService: PrivilegesService
   ) {
     this.init();
     //this.test();
@@ -40,8 +42,8 @@ export class SignInComponent implements OnInit {
         this.message = "signed in correctly";
         this.toster.success(this.message);
 
+        this.router.navigate(["pages/dashboard"]);
         // window.location.reload();
-        this.router.navigate(["/dashboard"]);
       } else {
         this.signedIn = false;
         this.ClassStyle = "warning";

@@ -9,16 +9,20 @@ import { privilegesGuard } from '../guards/privileges.guard';
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
-  // canActivate: [AuthGuard],
-  //data: ['dashboard'],
+  canActivate: [privilegesGuard],
+  data: [1, 2, 3, 72],
   children: [
     {
       path: 'dashboard',
       component: DashboardComponent,
+      canActivate: [privilegesGuard],
+      data: [1, 2, 3, 72],
     },
     {
       path: 'management',
-      loadChildren: "./managment/managment.module#ManagmentModule"
+      loadChildren: "./managment/managment.module#ManagmentModule",
+      canActivate: [privilegesGuard],
+      data: [1, 2, 3],
     }
   ],
 },
