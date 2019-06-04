@@ -16,6 +16,7 @@ export class PrivilegesService {
     private api: MainService,
     private tostr: ToastrService
   ) {
+    this.loadMyPrivileges();
   }
 
 
@@ -45,10 +46,10 @@ export class PrivilegesService {
       this.privileges = {}
       data['data'].forEach((p) => {
         this.privileges[p['name']] = true
+        this.isMyPrivilegesReady = true;
       })
       return true
     })
-
   }
 
   // myPrivilegesApi() {
@@ -57,14 +58,17 @@ export class PrivilegesService {
 
   isAuthorized(privileges: any): boolean {
 
-    let pass: boolean = true;
-    if (privileges)
-      privileges.forEach(item => {
-        if (!this.privileges[item]) {
-          pass = false;
-          return;
-        }
+    if (!this.isMyPrivilegesReady) {
+      this.promise.then((data) => {
+        this.privileges = {}
+        data['data'].forEach((p) => {
+          this.privileges[p['name']] = true
+        })
+        return privileges.some(item => this.privileges[item]);
       })
-    return pass;
+    } else {
+      return privileges.some(item => this.privileges[item]);
+    }
   }
+
 }

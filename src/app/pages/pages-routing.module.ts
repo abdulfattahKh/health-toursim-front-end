@@ -18,6 +18,8 @@ const routes: Routes = [{
     },
     {
       path: 'management',
+      canActivate: [privilegesGuard],
+      data: ['management'],
       loadChildren: "./managment/managment.module#ManagmentModule"
     }
   ],

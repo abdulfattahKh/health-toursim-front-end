@@ -12,78 +12,99 @@ import { UsersFormComponent } from './users/users-form/users-form.component';
 import { PrivilegesTableComponent } from './privileges/privileges-table/privileges-table.component';
 import { PrivilegesFormComponent } from './privileges/privileges-form/privileges-form.component';
 import { PrivilegesComponent } from './privileges/privileges.component';
+import { privilegesGuard } from '../../guards/privileges.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: managmentComponent,
+    data: ['management'],
+    canActivate: [privilegesGuard],
     children: [
       {
-        path: "roles",
-        component: RolesComponent,
+        path: '',
+        canActivateChild: [privilegesGuard],
+        data: ['management'],
         children: [
           {
-            path: "",
-            component: RolesTableComponent
+            path: "roles",
+            component: RolesComponent,
+            data: ['roles'],
+            children: [
+              {
+                path: "",
+                component: RolesTableComponent
+              },
+              {
+                path: "create",
+                component: CreateRoleComponent
+              },
+              {
+                path: "edit/:id",
+                component: EditRoleComponent
+              },
+              {
+                path: "**",
+                redirectTo: ""
+              }
+            ]
           },
           {
-            path: "create",
-            component: CreateRoleComponent
+            path: "users",
+            component: UsersComponent,
+            data: ['users'],
+            children: [
+              {
+                path: "",
+                component: UsersTableComponent
+              },
+              {
+                path: "create",
+                component: UsersFormComponent
+              },
+              {
+                path: "edit/:id",
+                component: UsersFormComponent
+              },
+              {
+                path: "**",
+                redirectTo: ""
+              }
+            ]
           },
           {
-            path: "edit/:id",
-            component: EditRoleComponent
-          },
-          {
-            path: "**",
-            redirectTo: ""
+            path: "privileges",
+            component: PrivilegesComponent,
+            canActivate: [privilegesGuard],
+            data: ['privileges'],
+            children: [
+              {
+                path: "",
+                canActivateChild: [privilegesGuard],
+                data: ['privileges'],
+                children: [
+                  {
+                    path: "",
+                    component: PrivilegesTableComponent
+                  },
+                  {
+                    path: "create",
+                    component: PrivilegesFormComponent
+                  },
+                  {
+                    path: "edit/:id",
+                    component: PrivilegesFormComponent
+                  },
+                  {
+                    path: "**",
+                    redirectTo: ""
+                  }
+                ]
+              },
+            ]
           }
         ]
       },
-      {
-        path: "users",
-        component: UsersComponent,
-        children: [
-          {
-            path: "",
-            component: UsersTableComponent
-          },
-          {
-            path: "create",
-            component: UsersFormComponent
-          },
-          {
-            path: "edit/:id",
-            component: UsersFormComponent
-          },
-          {
-            path: "**",
-            redirectTo: ""
-          }
-        ]
-      },
-      {
-        path: "privileges",
-        component: PrivilegesComponent,
-        children: [
-          {
-            path: "",
-            component: PrivilegesTableComponent
-          },
-          {
-            path: "create",
-            component: PrivilegesFormComponent
-          },
-          {
-            path: "edit/:id",
-            component: PrivilegesFormComponent
-          },
-          {
-            path: "**",
-            redirectTo: ""
-          }
-        ]
-      }
     ]
   },
 

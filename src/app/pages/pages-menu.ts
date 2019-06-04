@@ -6,12 +6,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'nb-home',
     link: '/pages/dashboard',
     home: true,
-    //data: { privilege: ['dashboard'] }
+    data: { privilege: ['dashboard'] }
   },
   {
     title: 'features',
     group: true,
-    //data: { privilege: ['features'] }
+    data: { privilege: ['features'] }
   },
   {
     title: 'auth',
@@ -38,25 +38,25 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: "management",
     icon: 'nb-locked',
-    //data: { privilege: ['management'] },
+    data: { privilege: ['management'] },
     children: [
       {
         title: 'roles',
         icon: "",
         link: "management/roles",
-        //data: { privilege: ['roles'] },
+        data: { privilege: ['roles'] },
       },
       {
         title: 'users',
         icon: "",
         link: "management/users",
-        //data: { privilege: ['users'] },
+        data: { privilege: ['users'] },
       },
       {
         title: 'privileges',
         icon: "",
         link: "management/privileges",
-        //data: { privilege: ['privileges'] },
+        data: { privilege: ['privileges'] },
       }
     ]
   }
