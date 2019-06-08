@@ -53,7 +53,11 @@
     "privileges": "Privileges",
     "addPrivilege": "add Privilege",
     "deletePrivilege": "delete privilege",
-    "users": "users"
+    "users": "users",
+    "clinics": "clinics",
+    "allClinics": "all Clinics",
+    "clinicsApplications": "clinics Applications",
+    "myClinics": "my Clinics"
   },
   "Management": {
     "management": "Management"
@@ -105,5 +109,6 @@
   "privileges": "Privileges",
   "permission_id": "permission id",
   "privilegename": "privilege Name",
-  "addprivileges": "add privilege"
+  "addprivileges": "add privilege",
+  "addClinic": "add Clinic"
 }

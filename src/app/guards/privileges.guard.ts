@@ -21,9 +21,9 @@ export class privilegesGuard implements CanActivate, CanActivateChild {
       return true;
     }
     const authored: boolean = this.privilegesService.isAuthorized(privileges);
-
+    console.log(authored)
     if (!authored) {
-      //this.router.navigate(['/'])
+      this.router.navigate(['/auth/signin']);
     }
     return authored;
   }

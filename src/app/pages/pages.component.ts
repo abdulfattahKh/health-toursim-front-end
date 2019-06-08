@@ -5,6 +5,7 @@ import { PrivilegesService } from '../services/privileges.service';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslationService } from '../services/translation.service';
 import { NbMenuItem } from '@nebular/theme';
+import { FieldsService } from '../services/fields.service';
 
 @Component({
   selector: 'ngx-pages',
@@ -22,7 +23,7 @@ export class PagesComponent implements OnInit {
   menu = [];
   constructor(
     private privilegesService: PrivilegesService,
-    private translate: TranslationService
+    private fieldService: FieldsService
   ) { }
 
   ngOnInit(): void {
@@ -32,26 +33,11 @@ export class PagesComponent implements OnInit {
     }
     this.privilegesService.promise
       .then(data => {
-        this.menu = this.getMenuItems(MENU_ITEMS);
+        this.menu = this.fieldService.getMenuItems(MENU_ITEMS);
       })
   }
 
-  getMenuItems(list: NbMenuItem[]) {
-    let out = [];
-    for (var i = 0; i < list.length; i++) {
-      if (
-        !list[i].data
-        || list[i].data.length == 0
-        || this.privilegesService.isAuthorized(list[i]['data']['privilege'])) {
-        list[i].title = this.translate.translateWord("List." + list[i].title);
-        out.push(list[i]);
-      }
-      if (list[i].children) {
-        list[i].children = this.getMenuItems(list[i].children);
-      }
-    }
-    return out;
-  }
+
 
 
 }

@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { FormCreatorService } from './form-creator.service';
 import { FieldsService } from '../../services/fields.service';
 import { DatePipe } from '@angular/common';
+import { MainService } from '../../services/main.service';
 
 @Component({
   selector: 'form-creator',
@@ -45,6 +46,7 @@ export class FormCreatorComponent implements OnInit {
     private tostr: ToastrService,
     private Route: ActivatedRoute,
     private router: Router,
+    private api: MainService,
     private fieldService: FieldsService,
     private translate: TranslationService,
     private FormCreatorService: FormCreatorService,
@@ -78,14 +80,24 @@ export class FormCreatorComponent implements OnInit {
       } else {
         formControl = new FormControl(null);
       }
-      // if (item.type == 'selectApi') {
-      //   this.getItems(item);
-      // }
+      if (!!item.basedOn && item.basedOn.length != 0) {
+        this.initListeners(item);
+      }
       this.Form.addControl(item.name, formControl);
     })
 
 
     this.display = true;
+  }
+
+  initListeners(item: any) {
+    if (Array.isArray(item.basedOn)) {
+      item.basedOn.forEach(field => {
+        this.Form.get(field).valueChanges.subscribe(value => {
+          this.getItems(item, value);
+        })
+      })
+    }
   }
 
   getDefaultValues() {
@@ -109,17 +121,15 @@ export class FormCreatorComponent implements OnInit {
   }
 
 
-  // getValidator(name: string) {
 
-  //   return this.validators[name]
-  // }
-
-  // getItems(item) {
-  //   this.api.get(item.apiName).subscribe(data => {
-  //     item.items = data['data'];
-  //     this.display = true;
-  //   })
-  // }
+  getItems(item, value) {
+    console.log(value);
+    this.api.get(item.apiName + "" + value[item.bindValue]).subscribe(data => {
+      if (item.type == "selectApi") {
+        item.items = data['data'];
+      }
+    })
+  }
 
   onChange(field, type = "") {
 

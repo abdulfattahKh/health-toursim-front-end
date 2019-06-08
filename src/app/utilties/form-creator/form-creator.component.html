@@ -47,7 +47,7 @@
               <my-select
                 [type]="'api'"
                 [bindLabel]="item.bindLabel"
-                [apiName]="'roles/roles'"
+                [apiName]="item.apiName"
                 [formControlName]="item.name"
                 (ngModelChange)="!!onChange(item.name,'selectApi')"
               ></my-select>

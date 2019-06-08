@@ -6,6 +6,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { ThemeModule } from '../@theme/theme.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { ManagmentModule } from './managment/managment.module';
+import { SharedModule } from '../shared/shared.module';
 
 const PAGES_COMPONENTS = [
   PagesComponent,
@@ -14,16 +15,15 @@ const PAGES_COMPONENTS = [
 @NgModule({
   imports: [
     PagesRoutingModule,
-    ThemeModule.forRoot(),
     ManagmentModule,
     DashboardModule,
     MiscellaneousModule,
-
+    ThemeModule.forRoot()
   ],
   declarations: [
     ...PAGES_COMPONENTS,
   ],
-  providers:[
+  providers: [
   ]
 })
 export class PagesModule {

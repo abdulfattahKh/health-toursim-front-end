@@ -56,8 +56,22 @@ export class PrivilegesService {
   //   return this.api.get("privileges/myPrivileges");
   // }
 
-  isAuthorized(privileges: any): boolean {
-
+  isAuthorized(privileges: any) {
+    return true;
+    // return new Promise((resolve, reject) => {
+    //   if (!this.isMyPrivilegesReady) {
+    //     console.log(this.isMyPrivilegesReady);
+    //     this.promise.then((data) => {
+    //       this.privileges = {}
+    //       data['data'].forEach((p) => {
+    //         this.privileges[p['name']] = true
+    //       })
+    //       resolve(privileges.some(item => this.privileges[item]));
+    //     })
+    //   } else {
+    //     resolve(privileges.some(item => this.privileges[item]));
+    //   }
+    // });
     if (!this.isMyPrivilegesReady) {
       this.promise.then((data) => {
         this.privileges = {}

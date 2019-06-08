@@ -1,0 +1,16 @@
+<nb-card>
+  <nb-card-header>
+    {{ "clinics" | translate }}
+  </nb-card-header>
+  <nb-card-body>
+    <my-smart-table
+      [fieldIndex]="'clinics'"
+      [apiName]="URL"
+      [deletionUrl]="deletionUrl"
+      [editingUrl]="edtingUrl"
+      [addingUrl]='addingUrl'
+      [settings]="settings"
+    >
+    </my-smart-table>
+  </nb-card-body>
+</nb-card>

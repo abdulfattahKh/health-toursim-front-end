@@ -15,7 +15,9 @@ export class AuthService implements OnInit {
   timer: any;
 
   //fillSignIn = new Subject();
-  constructor(private http: Http, private router: Router) { }
+  constructor(private http: Http, private router: Router) {
+    console.log("AuthService");
+  }
 
   getToken() {
     return localStorage.getItem("token");

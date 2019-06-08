@@ -28,7 +28,7 @@ import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { NotAuthorizedComponent } from './errors/not-authorized/not-authorized.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslationService } from './services/translation.service';
-
+import { AgmCoreModule } from '@agm/core';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -49,6 +49,9 @@ const Module = [BrowserAnimationsModule,
       useFactory: HttpLoaderFactory,
       deps: [HttpClient]
     }
+  }),
+  AgmCoreModule.forRoot({
+    apiKey: 'AIzaSyAjkSef3UQo6CdeeLcb9BYSdNM8GNG3bEs'
   }),
   BsDatepickerModule.forRoot(),
   NbDatepickerModule.forRoot(),

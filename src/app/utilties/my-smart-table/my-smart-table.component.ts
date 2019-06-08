@@ -10,6 +10,7 @@ import { NbDialogService } from '@nebular/theme';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal/public_api';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { promise } from 'selenium-webdriver';
+import { FieldsService } from '../../services/fields.service';
 @Component({
   selector: 'my-smart-table',
   templateUrl: './my-smart-table.component.html',
@@ -17,8 +18,10 @@ import { promise } from 'selenium-webdriver';
 })
 export class MySmartTableComponent implements OnInit {
 
+
   @Input('tableName') tableName: string;
   @Input('apiName') apiName: string;
+  @Input('fieldIndex') fieldIndex: string;
   @Input('settings') settings: any;
   @Input('dataSource') dataSource: any[];
   @Input('Dcolumns') columnsToDisplay: any[];
@@ -38,6 +41,7 @@ export class MySmartTableComponent implements OnInit {
     private router: Router,
     private tostr: ToastrService,
     private modalService: NgbModal,
+    private fieldService: FieldsService,
     private translate: TranslationService,
     private utiliesService: UtiliesService,
     private activatedRoute: ActivatedRoute,
@@ -99,7 +103,8 @@ export class MySmartTableComponent implements OnInit {
         .subscribe(data => {
           if (data['success']) {
             // if(!this.settings.columns) {
-            this.getMyColumns(data['data'][0]);
+            //this.getMyColumns(data['data'][0]);
+            this.getMyColumns(this.fieldService.getTableInfo(this.fieldIndex));
             this.loading = true;
             this.tostr.success('the data was fetched correctly');
             //}
@@ -107,6 +112,7 @@ export class MySmartTableComponent implements OnInit {
             this.source = new LocalDataSource(this.dataSource);
           }
         }, err => {
+          this.loading = true;
           this.tostr.error('there was an error while feching the data');
         })
     } else {
@@ -114,14 +120,23 @@ export class MySmartTableComponent implements OnInit {
     }
   }
 
-  getMyColumns(data) {
-    Object.keys(data).forEach(key => {
+  getMyColumns(data: string[]) {
+    // Object.keys(data).forEach(key => {
+    //   let KEY = key.toLowerCase();
+    //   this.settings.columns[key] = {
+    //     title: this.translate.translateWord("Table." + KEY)
+    //   }
+    // })
+
+    data.forEach(key => {
       let KEY = key.toLowerCase();
       this.settings.columns[key] = {
         title: this.translate.translateWord("Table." + KEY)
       }
     })
+
   }
+
 
   onCreate(event) {
     if (this.addingUrl && this.addingUrl != "") {

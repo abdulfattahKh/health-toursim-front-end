@@ -1,0 +1,140 @@
+<nb-layout *ngIf="!loading">
+  <nb-layout-column>
+    <form [formGroup]="form" class="from-group">
+      <nb-card class="justify-content-center">
+        <nb-card-header class="text-center">
+          {{ "addClinic" | translate }}
+        </nb-card-header>
+
+        <nb-card-body>
+          <div class="card">
+            <div class="card-body">
+              <div class="container">
+                <div class="row justify-content-center text-center">
+                  <div class="col-7 mb-2">
+                    <div class="col mb-2">
+                      <label for="clinicTypes">{{
+                        "clinicTypes" | translate
+                      }}</label>
+                      <ng-select
+                        [multiple]="true"
+                        [items]="clinicTypes"
+                        bindLabel="name"
+                        bindValue="id"
+                        appendTo="body"
+                        formControlName="clinicTypes"
+                      ></ng-select>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col mb-2">
+                      <label for="clinicName">{{
+                        "clinicName" | translate
+                      }}</label>
+                      <input
+                        id="clinicName"
+                        type="text"
+                        class="form-control"
+                        formControlName="name"
+                      />
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col mb-2">
+                      <label for="address">{{ "address" | translate }}</label>
+                      <input
+                        id="address"
+                        type="text"
+                        class="form-control"
+                        formControlName="address"
+                      />
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col mb-2">
+                      <label for="countries">{{
+                        "countries" | translate
+                      }}</label>
+                      <ng-select
+                        [items]="countries"
+                        bindLabel="country_name"
+                        bindValue="country_id"
+                        appendTo="body"
+                        formControlName="countries"
+                      ></ng-select>
+                    </div>
+                    <div class="col mb-2">
+                      <label for="cities">{{ "cities" | translate }}</label>
+                      <ng-select
+                        [items]="cities"
+                        bindLabel="name"
+                        bindValue="id"
+                        appendTo="body"
+                        formControlName="cities"
+                      ></ng-select>
+                    </div>
+                    <div class="col mb-2">
+                      <label for="states">{{ "cities" | translate }}</label>
+                      <ng-select
+                        [items]="states"
+                        bindLabel="name"
+                        bindValue="id"
+                        appendTo="body"
+                        formControlName="states"
+                      ></ng-select>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col mb-2">
+                      <label for="phoneNumber">{{
+                        "phoneNumber" | translate
+                      }}</label>
+                      <input
+                        id="phoneNumber"
+                        type="number"
+                        class="form-control"
+                        formControlName="phoneNumber"
+                      />
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col mb-2">
+                      <label for="mobileNumber">{{
+                        "mobileNumber" | translate
+                      }}</label>
+                      <input
+                        id="mobileNumber"
+                        type="number"
+                        class="form-control"
+                        formControlName="mobileNumber"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-5 mb-2">
+                    <agm-map [latitude]="latitude" [longitude]="longitude" (mapClick)="placeMarker($event)">
+                      <agm-marker
+                        *ngFor="let marker of markers"
+                        [latitude]="marker.latitude"
+                        [longitude]="marker.longitude"
+                      ></agm-marker>
+                    </agm-map>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nb-card-body>
+
+        <nb-card-footer>
+          <div class="row justify-content-center">
+            <div class="col-sm-6 text-center">
+              <button
+                [disabled]="!form.valid"
+                type="button"
+                class="btn btn-primary"
+                (click)="onSubmit()"
+              >
+                {{ "addClinic" | translate }}
+              </button>
+            </div>
+          </div>
+        </nb-card-footer>
+      </nb-card>
+    </form>
+  </nb-layout-column>
+</nb-layout>

@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Validators, FormControl } from '@angular/forms';
 import { AuthService } from '../Auth/Auth.service';
+import { NbMenuItem } from '@nebular/theme';
+import { PrivilegesService } from './privileges.service';
+import { TranslationService } from './translation.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +11,30 @@ import { AuthService } from '../Auth/Auth.service';
 export class FieldsService {
 
   constructor(
-    private AuthService: AuthService
+    private AuthService: AuthService,
+    private privilegesService: PrivilegesService,
+    private translate: TranslationService
   ) { }
 
   validators: Validators[];
+
+  getMenuItems(list: NbMenuItem[]) {
+    let out = [];
+    for (var i = 0; i < list.length; i++) {
+      if (
+        !list[i].data
+        || list[i].data.length == 0
+        || this.privilegesService.isAuthorized(list[i]['data']['privilege'])) {
+        list[i].title = this.translate.translateWord(list[i].title);
+        out.push(list[i]);
+      }
+      if (list[i].children) {
+        list[i].children = this.getMenuItems(list[i].children);
+      }
+    }
+    return out;
+  }
+
   getFields(name) {
     var fields = {};
     fields['addRole'] = [
@@ -33,7 +56,79 @@ export class FieldsService {
         { name: 'name', type: 'text', label: 'privilegeName', validators: [Validators.required, Validators.minLength(3)], colClasses: ['col-7', 'my-2'], inputClasses: ['mt-1'] },
         { name: 'description', type: 'text', label: 'description', validators: [Validators.required, Validators.minLength(3)], colClasses: ['col-7', 'my-2'], inputClasses: ['mt-1'] }
       ]
+      ,
+      fields['addClinic'] = [
+        {
+          name: 'specialization',
+          type: 'selectApi',
+          label: 'specialization',
+          apiName: 'clinics/clinicTypes',
+          bindLabel: 'name',
+          bindValue: 'id',
+          validators: [Validators.required, Validators.minLength(3)], colClasses: ['row', 'col-6', 'my-2'], inputClasses: ['mt-1']
+        },
+        {
+          name: 'clinicsName',
+          type: 'text',
+          label: 'clinicsName',
+          validators: [Validators.required,
+          Validators.minLength(3)],
+          colClasses: ['justify-content-center', 'row', 'col-6', 'my-2'],
+          inputClasses: ['mt-1']
+        },
+        {
+          name: 'country',
+          type: 'selectApi',
+          label: 'country',
+          apiName: 'location/countries',
+          bindLabel: 'country_name',
+          bindValue: 'country_id',
+          validators: [Validators.required],
+          colClasses: ['col-2', 'my-2'],
+          inputClasses: ['mt-1']
+        },
+
+        {
+          name: 'city',
+          type: 'selectApi',
+          label: 'city',
+          apiName: 'location/city',
+          bindLabel: 'name',
+          bindValue: 'id',
+          basedOn: ['country'],
+          validators: [Validators.required],
+          colClasses: ['col-2', 'my-2'],
+          inputClasses: ['mt-1']
+        },
+        {
+          name: 'state',
+          type: 'selectApi',
+          label: 'state',
+          apiName: 'location/state/0',
+          bindLabel: 'name',
+          bindValue: 'id',
+          basedOn: ['city'],
+          validators: [Validators.required],
+          colClasses: ['col-2', 'my-2'],
+          inputClasses: ['mt-1']
+        },
+      ]
     return fields[name];
+  }
+
+  getTableInfo(tableName) {
+    var fields = {};
+    fields['users'] = [
+      "firstName", "lastName", "email", "gender", "birthday", "mobileNumber"],
+      fields['clinics'] = [
+        "clinicName", "fOwnerName", "lOwnerName", "email", "city", "country", "descrption"
+      ]
+    fields['roles'] = [
+      'name', 'description'],
+      fields['privileges'] = [
+        'name', 'description'
+      ]
+    return fields[tableName]
   }
 
   checkEmail(control: FormControl) {

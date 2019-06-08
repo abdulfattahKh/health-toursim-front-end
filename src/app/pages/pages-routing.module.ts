@@ -5,26 +5,22 @@ import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from '../guards/auth.guard';
 import { privilegesGuard } from '../guards/privileges.guard';
-
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
-  // canActivate: [AuthGuard],
-  //data: ['dashboard'],
   children: [
     {
       path: 'dashboard',
       component: DashboardComponent,
     },
     {
-      path: 'management',
-      canActivate: [privilegesGuard],
-      data: ['management'],
-      loadChildren: "./managment/managment.module#ManagmentModule"
-    }
+      path: '',
+      redirectTo: 'dashboard',
+      pathMatch: 'full',
+    },
+    { path: 'management', canActivate: [AuthGuard], data: ['management'], loadChildren: './managment/managment.module#ManagmentModule' },
   ],
-},
-];
+}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
