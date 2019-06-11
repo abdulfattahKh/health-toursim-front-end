@@ -18,6 +18,7 @@
                         "clinicTypes" | translate
                       }}</label>
                       <ng-select
+                        [multiple] = "true"
                         [items]="clinicTypes"
                         bindLabel="name"
                         bindValue="spec_id"
