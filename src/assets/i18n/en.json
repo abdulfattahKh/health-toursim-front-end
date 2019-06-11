@@ -110,5 +110,14 @@
   "permission_id": "permission id",
   "privilegename": "privilege Name",
   "addprivileges": "add privilege",
-  "addClinic": "add Clinic"
+  "addClinic": "add Clinic",
+  "clinicTypes":"clinic Types",
+  "clinicName":"clinic Name",
+  "address":"address",
+  "countries":"countries",
+  "cities":"cities",
+  "states":"states",
+  "phoneNumber":"phone Number",
+  "mobileNumber":"mobile number"
+
 }

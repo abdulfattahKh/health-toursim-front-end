@@ -55,13 +55,13 @@ export class ClinicsTableComponent implements OnInit {
       confirm: true
     },
     actions: {
-      custom: [
-        {
-          name: 'accept',
-          title: `<i class="nb-trash"></i>`,
-          privilege: ['accpetClinic'],
-        }
-      ],
+      // custom: [
+      //   {
+      //     name: 'accept',
+      //     title: `<i class="nb-trash"></i>`,
+      //     privilege: ['accpetClinic'],
+      //   }
+      // ],
       add: false,
       delete: true,
       edit: false,

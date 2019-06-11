@@ -111,5 +111,13 @@
   "permission_id": "الرقم",
   "privilegename": "اسم الصلاحية",
   "addprivileges": "إضافة صلاحية",
-  "addClinic": "إضافة عيادة"
+  "addClinic": "إضافة عيادة",
+  "clinicTypes":"اختصاصات العيادة",
+  "clinicName":"اسم العيادة",
+  "address":"العنوان بالتفصيل",
+  "countries":"البلدان",
+  "cities":"المدن",
+  "states":"الاماكن",
+  "phoneNumber":"رقم الهاتف الارضي",
+  "mobileNumber":"رقم الهاتف الجوال"
 }

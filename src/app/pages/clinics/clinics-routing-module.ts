@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { ClinicsComponent } from './clinics/clinics.component';
 import { privilegesGuard } from '../../guards/privileges.guard';
 import { ClinicsTableComponent } from './clinics-table/clinics-table.component';
-import { EditClinicComponent } from './clinics/edit-clinic/edit-clinic.component';
 import { AddClinicComponent } from './clinics/add-clinic/add-clinic.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -42,10 +42,10 @@ const routes: Routes = [
             component:AddClinicComponent
           },
           {
-            path:"addClinic",
+            path:"editClinic",
             // canActivate: [privilegesGuard],
             // data: ['editClinic'],
-            component:EditClinicComponent
+            loadChildren:'../clinics/clinics/clinic/clinic.module#ClinicModule'
             
           }
         ]

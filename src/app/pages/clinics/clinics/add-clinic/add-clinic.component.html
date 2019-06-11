@@ -1,3 +1,4 @@
+<div [nbSpinner]="loading" nbSpinnerStatus="danger">
 <nb-layout *ngIf="!loading">
   <nb-layout-column>
     <form [formGroup]="form" class="from-group">
@@ -17,10 +18,9 @@
                         "clinicTypes" | translate
                       }}</label>
                       <ng-select
-                        [multiple]="true"
                         [items]="clinicTypes"
                         bindLabel="name"
-                        bindValue="id"
+                        bindValue="spec_id"
                         appendTo="body"
                         formControlName="clinicTypes"
                       ></ng-select>
@@ -57,27 +57,27 @@
                         bindLabel="country_name"
                         bindValue="country_id"
                         appendTo="body"
-                        formControlName="countries"
+                        formControlName="country"
                       ></ng-select>
                     </div>
                     <div class="col mb-2">
                       <label for="cities">{{ "cities" | translate }}</label>
                       <ng-select
                         [items]="cities"
-                        bindLabel="name"
-                        bindValue="id"
+                        bindLabel="city_name"
+                        bindValue="city_id"
                         appendTo="body"
-                        formControlName="cities"
+                        formControlName="city"
                       ></ng-select>
                     </div>
                     <div class="col mb-2">
-                      <label for="states">{{ "cities" | translate }}</label>
+                      <label for="states">{{ "states" | translate }}</label>
                       <ng-select
                         [items]="states"
-                        bindLabel="name"
-                        bindValue="id"
+                        bindLabel="state_name"
+                        bindValue="state_id"
                         appendTo="body"
-                        formControlName="states"
+                        formControlName="state"
                       ></ng-select>
                     </div>
                     <div class="w-100"></div>
@@ -105,14 +105,22 @@
                       />
                     </div>
                   </div>
-                  <div class="col-5 mb-2">
-                    <agm-map [latitude]="latitude" [longitude]="longitude" (mapClick)="placeMarker($event)">
+                  <div class="col-5 mb-2" *ngIf="location">
+                    <agm-map
+                      [latitude]="location.latitude"
+                      [longitude]="location.longitude"
+                      (mapClick)="placeMarker($event)"
+                    >
                       <agm-marker
-                        *ngFor="let marker of markers"
                         [latitude]="marker.latitude"
                         [longitude]="marker.longitude"
                       ></agm-marker>
                     </agm-map>
+                    <div class="col-5 mb-2 mt-2">
+                      <button class="btn btn-danger" (click) = "resetMarkersLocation()">
+                        {{ "resetMarkersLocation" | translate }}
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -138,3 +146,4 @@
     </form>
   </nb-layout-column>
 </nb-layout>
+</div>
