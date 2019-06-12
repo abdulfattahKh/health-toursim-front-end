@@ -41,13 +41,6 @@ const routes: Routes = [
             // data: ['addClinic'],
             component:AddClinicComponent
           },
-          {
-            path:"editClinic",
-            // canActivate: [privilegesGuard],
-            // data: ['editClinic'],
-            loadChildren:'../clinics/clinics/clinic/clinic.module#ClinicModule'
-            
-          }
         ]
       }
     ]

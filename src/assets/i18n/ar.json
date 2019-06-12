@@ -119,5 +119,14 @@
   "cities":"المدن",
   "states":"الاماكن",
   "phoneNumber":"رقم الهاتف الارضي",
-  "mobileNumber":"رقم الهاتف الجوال"
+  "mobileNumber":"رقم الهاتف الجوال",
+  "clinicProfile":"معلومات العيادة",
+  "clinicDescrption":"الوصف",
+  "addClinicPicture":"اضافة صور",
+  "Currency":"العملة",
+  "OpeningHours":"ساعات العمل",
+  "ClinicServices":"خدمات العيادة",
+  "PaymentInformation":"معلومات العيادة",
+  "Languages":"الغات",
+  "ExportEnquiries":"تصدير الطلبات"
 }
