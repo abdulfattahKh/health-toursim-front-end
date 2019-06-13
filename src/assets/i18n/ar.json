@@ -57,7 +57,13 @@
     "clinics": "العيادات",
     "allClinics": "كل العيادات",
     "clinicsApplications": "طلبات الانضمام",
-    "myClinics": "عياداتي"
+    "myClinics": "عياداتي",
+    "inbox":"البريد",
+    "profile":"الحساب الشخصي",
+    "treatment":"المعالجة",
+    "stuff":"الأعضاء",
+    "reviews":"المرجعات",
+    "clinic":"العيادة"
   },
   "Management": {
     "management": "الإدارة"
@@ -128,5 +134,7 @@
   "ClinicServices":"خدمات العيادة",
   "PaymentInformation":"معلومات العيادة",
   "Languages":"الغات",
-  "ExportEnquiries":"تصدير الطلبات"
+  "ExportEnquiries":"تصدير الطلبات",
+  "clinicOverview":"معلومات عامة",
+  "profile":"الحساب الشخصي"
 }

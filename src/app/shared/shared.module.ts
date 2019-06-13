@@ -6,6 +6,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { UtilitiesModule } from '../utilties/utilities.module';
 import { RouterModule } from '@angular/router';
 import { AgmCoreModule } from '@agm/core';
+import { NbLayoutModule } from '@nebular/theme';
 
 
 
@@ -16,7 +17,9 @@ const EXPORT_MODULES = [CommonModule,
   TranslateModule,
   UtilitiesModule,
   RouterModule,
-  AgmCoreModule
+  AgmCoreModule,
+  NbLayoutModule,
+  UtilitiesModule,
 ]
 
 const IMPORT_MODULES = [CommonModule,
@@ -26,7 +29,8 @@ const IMPORT_MODULES = [CommonModule,
   TranslateModule,
   UtilitiesModule,
   RouterModule,
-  AgmCoreModule
+  AgmCoreModule,
+  NbLayoutModule
 ]
 
 

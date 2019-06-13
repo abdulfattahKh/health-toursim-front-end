@@ -148,7 +148,7 @@ export class MySmartTableComponent implements OnInit {
 
   onEdit(event) {
     if (this.editingUrl && this.editingUrl != "") {
-      this.router.navigateByUrl(this.editingUrl);
+      this.router.navigateByUrl(this.editingUrl + "/" + event.data['id']);
     } else {
       this.router.navigate(['edit/' + event.data['id']], { relativeTo: this.activatedRoute });
     }

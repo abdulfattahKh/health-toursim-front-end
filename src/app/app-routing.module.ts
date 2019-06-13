@@ -7,7 +7,7 @@ const routes: Routes = [
   { path: 'pages', canActivate: [AuthGuard], data: ['pages'], loadChildren: 'app/pages/pages.module#PagesModule' },
   { path: 'auth', loadChildren: 'app/Auth/Auth.module#AuthModule' },
   { path: 'clinics', canActivate: [AuthGuard], data: ['clinics'], loadChildren: 'app/pages/clinics/clinics.module#ClinicsModule' },
-  { path: "clinics/editClinic",
+  { path: "clinics/editClinic/:id",
   // canActivate: [privilegesGuard],
   // data: ['editClinic'],
   loadChildren: './pages/clinics/clinics/clinic/clinic.module#ClinicModule'

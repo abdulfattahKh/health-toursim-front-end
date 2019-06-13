@@ -3,7 +3,7 @@ import { CommonModule } from "@angular/common";
 import { HttpModule } from "@angular/http";
 import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
-import { NbCardModule, NbDatepickerModule, NbDialogModule, NbSpinnerModule } from "@nebular/theme";
+import { NbCardModule, NbDatepickerModule, NbDialogModule, NbSpinnerModule, NbLayoutModule } from "@nebular/theme";
 import { MySelectComponent } from "./my-select/my-select.component";
 import { NgSelectModule } from "@ng-select/ng-select";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";

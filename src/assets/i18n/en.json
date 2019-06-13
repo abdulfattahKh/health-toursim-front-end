@@ -57,7 +57,13 @@
     "clinics": "clinics",
     "allClinics": "all Clinics",
     "clinicsApplications": "clinics Applications",
-    "myClinics": "my Clinics"
+    "myClinics": "my Clinics",
+    "inbox":"inbox",
+    "profile":"profile",
+    "treatment":"treatment",
+    "stuff":"stuff",
+    "reviews":"reviews",
+    "clinic":"Clinic"
   },
   "Management": {
     "management": "Management"
@@ -118,6 +124,9 @@
   "cities":"cities",
   "states":"states",
   "phoneNumber":"phone Number",
-  "mobileNumber":"mobile number"
-
+  "mobileNumber":"mobile number",
+  "clinicProfile":"clinic Profile",
+  "clinicDescription":"clinic description",
+  "clinicOverview":"clinic Overview",
+  "profile":"Profile"
 }
