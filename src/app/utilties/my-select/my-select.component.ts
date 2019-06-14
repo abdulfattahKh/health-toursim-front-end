@@ -25,6 +25,7 @@ export class MySelectComponent implements OnInit, ControlValueAccessor {
 
   @Input("bindLabel") bindLabel: any;
   @Input("bindValue") bindValue: any;
+  @Input("multiple") multiple:boolean;
   selectItems: any[];
   @Input() selectedItem: any;
   constructor(
@@ -48,7 +49,7 @@ export class MySelectComponent implements OnInit, ControlValueAccessor {
       data => {
         if (data.success === true) {
           this.selectItems = data.data;
-          this.ToastrService.success("get my roles");
+          //this.ToastrService.success("get my roles");
         } else {
           this.ToastrService.error("there was an error");
           this.selectItems = [];

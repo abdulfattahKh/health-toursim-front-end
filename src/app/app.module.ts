@@ -29,6 +29,7 @@ import { NotAuthorizedComponent } from './errors/not-authorized/not-authorized.c
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslationService } from './services/translation.service';
 import { AgmCoreModule } from '@agm/core';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -43,6 +44,7 @@ const Module = [BrowserAnimationsModule,
   CoreModule.forRoot(),
   ToastrModule.forRoot(), // ToastrModule added
   NbDialogModule.forRoot(),
+  
   TranslateModule.forRoot({
     loader: {
       provide: TranslateLoader,
@@ -66,7 +68,8 @@ const Services = [
 @NgModule({
   declarations: [AppComponent, NotFoundComponent, NotAuthorizedComponent],
   imports: [
-    ...Module
+    ...Module,
+    CarouselModule.forRoot()
   ],
   providers: [{ provide: APP_BASE_HREF, useValue: "/" }, ...Services],
   bootstrap: [AppComponent],

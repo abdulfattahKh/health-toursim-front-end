@@ -52,66 +52,22 @@ export class FieldsService {
       { name: 'role_id', type: 'selectApi', disabled: "true", apiName: "roles/roles", bindLabel: 'name', bindValue: 'id', label: 'role', validators: [Validators.required], colClasses: ['col-5', 'my-2'], inputClasses: ['mt-1'] }
     ],
 
+
+    fields['users'] = [
+      { name: 'first_name', type: 'text', label: 'firstName', validators: [Validators.required, Validators.minLength(3)], colClasses: ['col-5', 'my-2'], inputClasses: ['mt-1'] },
+      { name: 'last_name', type: 'text', label: 'lastName', validators: [Validators.required], colClasses: ['col-5', 'my-2'], inputClasses: ['mt-1'] },
+      { name: 'email', type: 'text', label: 'email', validators: [Validators.required], asyncValidators: [this.checkEmail.bind(this)], colClasses: ['col-10', 'my-2'], inputClasses: ['mt-1'] },
+      { name: 'password', type: 'password', label: 'password', validators: [Validators.required], colClasses: ['col-10', 'my-2'], inputClasses: ['mt-1'] },
+      // { name: 'confirmPassword', type: 'password', label: 'confirmPassword', validators: [Validators.required], colClasses: ['col-10', 'my-2'], inputClasses: ['mt-1'] },
+      { name: 'birthday', type: 'date', label: 'birthday', validators: [Validators.required], colClasses: ['col-5', 'my-2'], inputClasses: ['mt-1'] },
+      { name: 'mobile_number', type: 'number', label: 'mobileNumber', validators: [Validators.required], colClasses: ['col-5', 'my-2'], inputClasses: ['mt-1'] },
+      // { name: 'roleName', type: 'selectApi', apiName: "roles/roles", bindLabel: 'name', bindValue: 'id', label: 'roleName', validators: [Validators.required], colClasses: ['col-5', 'my-2'], inputClasses: ['mt-1'] }
+      { name: 'role_id', type: 'selectApi', disabled: "true", apiName: "roles/roles", bindLabel: 'name', bindValue: 'id', label: 'role', validators: [Validators.required], colClasses: ['col-5', 'my-2'], inputClasses: ['mt-1'] }
+    ],
+
       fields['permissions'] = [
         { name: 'name', type: 'text', label: 'privilegeName', validators: [Validators.required, Validators.minLength(3)], colClasses: ['col-7', 'my-2'], inputClasses: ['mt-1'] },
         { name: 'description', type: 'text', label: 'description', validators: [Validators.required, Validators.minLength(3)], colClasses: ['col-7', 'my-2'], inputClasses: ['mt-1'] }
-      ]
-      ,
-      fields['addClinic'] = [
-        {
-          name: 'specialization',
-          type: 'selectApi',
-          label: 'specialization',
-          apiName: 'clinics/clinicTypes',
-          bindLabel: 'name',
-          bindValue: 'id',
-          validators: [Validators.required, Validators.minLength(3)], colClasses: ['row', 'col-6', 'my-2'], inputClasses: ['mt-1']
-        },
-        {
-          name: 'clinicsName',
-          type: 'text',
-          label: 'clinicsName',
-          validators: [Validators.required,
-          Validators.minLength(3)],
-          colClasses: ['justify-content-center', 'row', 'col-6', 'my-2'],
-          inputClasses: ['mt-1']
-        },
-        {
-          name: 'country',
-          type: 'selectApi',
-          label: 'country',
-          apiName: 'location/countries',
-          bindLabel: 'country_name',
-          bindValue: 'country_id',
-          validators: [Validators.required],
-          colClasses: ['col-2', 'my-2'],
-          inputClasses: ['mt-1']
-        },
-
-        {
-          name: 'city',
-          type: 'selectApi',
-          label: 'city',
-          apiName: 'location/city',
-          bindLabel: 'name',
-          bindValue: 'id',
-          basedOn: ['country'],
-          validators: [Validators.required],
-          colClasses: ['col-2', 'my-2'],
-          inputClasses: ['mt-1']
-        },
-        {
-          name: 'state',
-          type: 'selectApi',
-          label: 'state',
-          apiName: 'location/state/0',
-          bindLabel: 'name',
-          bindValue: 'id',
-          basedOn: ['city'],
-          validators: [Validators.required],
-          colClasses: ['col-2', 'my-2'],
-          inputClasses: ['mt-1']
-        },
       ]
     return fields[name];
   }

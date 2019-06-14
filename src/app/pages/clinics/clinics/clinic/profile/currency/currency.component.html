@@ -1,0 +1,31 @@
+<nb-card>
+  <nb-card-header>
+
+    <h4 class="mb-4 border-bottom">{{'Currency' | translate}}</h4>
+    <h6>Select the currency you primarily accept. We automatically convert your prices to the patients local currency .
+    </h6>
+  </nb-card-header>
+  <nb-card-body>
+    <div class="row text-center justify-content-center">
+      <div class="col">
+        <ng-select 
+        [items] = "Currencies"
+        [bindLabel] = "'name'"
+        [bindValue] = "'id'"
+        [(ngModel)]="Currency"
+        appendTo="body"
+        >
+        </ng-select>
+      </div>
+    </div>
+  </nb-card-body>
+  <nb-card-footer>
+    <div class="row text-center justify-content-center">
+      <div class="col-3">
+        <button class="btn btn-success btn-sm" (click)="addCurrency()">
+          {{'addCurrency' | translate }}
+        </button>
+      </div>
+    </div>
+  </nb-card-footer>
+</nb-card>

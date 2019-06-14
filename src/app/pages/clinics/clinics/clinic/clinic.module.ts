@@ -12,12 +12,14 @@ import { DescriptionComponent } from './profile/description/description.componen
 import { ClinicPicturesComponent } from './profile/clinic-pictures/clinic-pictures.component';
 import { CurrencyComponent } from './profile/currency/currency.component';
 import { FormsModule } from '@angular/forms';
+import { UtilitiesModule } from '../../../../utilties/utilities.module';
 
 @NgModule({
   declarations: [ClinicComponent, ProfileComponent, TreatmentsComponent, StuffComponent, ReviewsComponent, ClinicInformationComponent, DescriptionComponent, ClinicPicturesComponent, CurrencyComponent],
   imports: [
     ThemeModule,
     SharedModule,
+    UtilitiesModule,
     ClinicRoutingModule
   ]
 })

@@ -1,0 +1,12 @@
+<nb-card>
+  <nb-card-header>
+    <h5 class="border-bottom">
+      {{'pictures' | translate}}
+    </h5>
+  </nb-card-header>
+
+  <nb-card-body class="border-bottom">
+    <images [slides]="images" [shown]="'true'" [fileName]="'clinics'" (submit)="addImages($event)"></images>
+  </nb-card-body>
+
+</nb-card>

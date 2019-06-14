@@ -13,6 +13,8 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { MySmartTableComponent } from './my-smart-table/my-smart-table.component';
 import { FormCreatorComponent } from './form-creator/form-creator.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { ImagesComponent } from './images/images.component';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 const EXPORT_MODULES = [CommonModule,
   HttpModule,
   ReactiveFormsModule,
@@ -28,7 +30,9 @@ const EXPORT_MODULES = [CommonModule,
   FormCreatorComponent,
   NbDialogModule,
   ModalModule,
-  NbSpinnerModule
+  NbSpinnerModule,
+  CarouselModule,
+  ImagesComponent
 ]
 
 const IMPORT_MODULES = [CommonModule,
@@ -41,11 +45,12 @@ const IMPORT_MODULES = [CommonModule,
   BsDatepickerModule,
   TranslateModule,
   NbSpinnerModule,
+  CarouselModule,
   ModalModule.forRoot(),
   NbDialogModule.forChild()
 ]
 @NgModule({
-  declarations: [MySelectComponent, MySmartTableComponent, FormCreatorComponent],
+  declarations: [MySelectComponent, MySmartTableComponent, FormCreatorComponent, ImagesComponent],
   imports: [
     ...IMPORT_MODULES
   ],

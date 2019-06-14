@@ -1,0 +1,55 @@
+<carousel [(activeSlide)]="activeSlideIndex" *ngIf="slides.length!=0; else noImage">
+
+  <!-- <div *ngIf="!isItFile">
+    there -->
+  <slide *ngFor="let slide of slides; let index=index">
+    <div *ngIf="!slide['name']">
+      <img [src]="this.uploadPath+slide" class="img-thumbnail" alt="image slide"
+        style="display: block; width: 100%;height: 400px;">
+    </div>
+  </slide>
+  <!-- </div> -->
+</carousel>
+<br />
+<div *ngIf="shown" class="row justify-content-center">
+  <div class="col-4 text-center">
+    <button type="button" size="small" nbButton hero status="primary" (click)="removeSlide()">{{"button.Delete" | translate}}
+    </button>
+  </div>
+  <div class="col-4 text-center">
+    <button type="button" size="small" nbButton hero status="primary" (click)="file.click()">{{"button.add" | translate}}
+    </button>
+  </div>
+  <div>
+    <!-- <button type="button" class="btn btn-info" (click)="save()">{{"button.save" | translate}}
+    </button> -->
+  </div>
+</div>
+
+<input type="file" multiple = "true" #file (change)='addSlide($event)' hidden="true">
+
+
+<!-- <ng-template #imageModel let-c="close" let-d="dismiss">
+  <div class="modal-header" [lang]="lang">
+    <h4 class="modal-title">{{ title }}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="!!d()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" [lang]="lang">
+
+  </div>
+  <div class="modal-footer" [lang]="lang">
+    <button type="button" class="btn btn-primary btn-pill btn-sm py-2 px-4 mr-2" (click)="!!c(true)">
+      {{ "button.yes" | translate }}
+    </button>
+    <button type="button" class="btn btn-secondary btn-pill btn-sm py-2 px-4 mr-2" (click)="!!c(false)">
+      {{ "button.no" | translate }}
+    </button>
+  </div>
+</ng-template> -->
+
+
+<ng-template #noImage>
+  <h5>you have not added any images yet</h5>
+</ng-template>

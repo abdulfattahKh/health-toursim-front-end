@@ -1,0 +1,27 @@
+<nb-card>
+  <nb-card-header>
+
+    <h4 class="mb-4 border-bottom">{{'clinicDescription' | translate}}</h4>
+    <h6>Please enter the description of your clinic to be shown in your brochure. You should try to describe the best
+      features of your clinic. Please do not include contact information such as email, phone number or website address.
+      Extra formatting will be cleaned from this text.
+    </h6>
+  </nb-card-header>
+  <nb-card-body>
+    <div class="row text-center justify-content-center">
+      <div class="col">
+        <textarea class="form-control" [(ngModel)]="description">
+        </textarea>
+      </div>
+    </div>
+  </nb-card-body>
+  <nb-card-footer>
+    <div class="row text-center justify-content-center">
+      <div class="col-3">
+        <button class="btn btn-success" (click)="addescription()">
+          {{'addDescription' | translate }}
+        </button>
+      </div>
+    </div>
+  </nb-card-footer>
+</nb-card>

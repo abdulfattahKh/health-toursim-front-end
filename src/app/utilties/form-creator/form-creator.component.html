@@ -35,15 +35,6 @@
 
             <div *ngSwitchCase="'selectApi'">
               <h6 class="font-weight-bold">{{ item.label }}</h6>
-              <!-- <ng-select
-                class="custom"
-                [id]="item.name"
-                [items]="!!item.items"
-                bindLabel="!!item.bindLabel"
-                bindValue="!!item.bindValue"
-                [formControlName]="item.name"
-              >
-              </ng-select> -->
               <my-select
                 [type]="'api'"
                 [bindLabel]="item.bindLabel"
@@ -51,6 +42,18 @@
                 [formControlName]="item.name"
                 (ngModelChange)="!!onChange(item.name,'selectApi')"
               ></my-select>
+            </div>
+
+            <div *ngSwitchCase="'multiSelectApi'">
+                <h6 class="font-weight-bold">{{ item.label }}</h6>
+                <my-select
+                  [multiple] = 'true'
+                  [type]="'api'"
+                  [bindLabel]="item.bindLabel"
+                  [apiName]="item.apiName"
+                  [formControlName]="item.name"
+                  (ngModelChange)="!!onChange(item.name,'multiSelectApi')"
+                ></my-select>
             </div>
 
             <div *ngSwitchCase="'textarea'">
