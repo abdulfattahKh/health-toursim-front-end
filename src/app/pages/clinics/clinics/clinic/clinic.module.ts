@@ -13,6 +13,8 @@ import { ClinicPicturesComponent } from './profile/clinic-pictures/clinic-pictur
 import { CurrencyComponent } from './profile/currency/currency.component';
 import { FormsModule } from '@angular/forms';
 import { UtilitiesModule } from '../../../../utilties/utilities.module';
+import { TypeaheadModule } from 'ngx-bootstrap';
+
 
 @NgModule({
   declarations: [ClinicComponent, ProfileComponent, TreatmentsComponent, StuffComponent, ReviewsComponent, ClinicInformationComponent, DescriptionComponent, ClinicPicturesComponent, CurrencyComponent],
@@ -20,6 +22,7 @@ import { UtilitiesModule } from '../../../../utilties/utilities.module';
     ThemeModule,
     SharedModule,
     UtilitiesModule,
+    TypeaheadModule,
     ClinicRoutingModule
   ]
 })

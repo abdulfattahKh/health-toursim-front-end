@@ -6,7 +6,12 @@
   </nb-card-header>
 
   <nb-card-body class="border-bottom">
-    <images [slides]="images" [shown]="'true'" [fileName]="'clinics'" (submit)="addImages($event)"></images>
+    <images 
+    [slides]="slides" 
+    [shown]="'true'"
+     [fileName]="'clinics'" 
+     (deleteImage) = "deleteImage($event)"
+     (submit)="addImages($event)"></images>
   </nb-card-body>
 
 </nb-card>

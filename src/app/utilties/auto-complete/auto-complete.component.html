@@ -1,0 +1,13 @@
+
+<input 
+[(ngModel)]="asyncSelected" 
+[typeaheadAsync]="true" 
+[typeahead]="dataSource"
+(typeaheadOnSelect)="typeaheadOnSelect($event)"
+typeaheadOptionField="name" 
+[placeholder]="title"
+container="body"
+[typeaheadScrollable]="true"
+[typeaheadOptionsInScrollableView]="5"
+[dropup]="true"
+class="form-control">

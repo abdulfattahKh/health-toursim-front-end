@@ -15,6 +15,9 @@ import { FormCreatorComponent } from './form-creator/form-creator.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ImagesComponent } from './images/images.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { AutoCompleteComponent } from './auto-complete/auto-complete.component';
+import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
+import { TypeaheadModule } from 'ngx-bootstrap';
 const EXPORT_MODULES = [CommonModule,
   HttpModule,
   ReactiveFormsModule,
@@ -32,7 +35,10 @@ const EXPORT_MODULES = [CommonModule,
   ModalModule,
   NbSpinnerModule,
   CarouselModule,
-  ImagesComponent
+  ImagesComponent,
+  NgbTypeaheadModule,
+  AutoCompleteComponent,
+  TypeaheadModule
 ]
 
 const IMPORT_MODULES = [CommonModule,
@@ -46,11 +52,14 @@ const IMPORT_MODULES = [CommonModule,
   TranslateModule,
   NbSpinnerModule,
   CarouselModule,
+  NgbTypeaheadModule,
+
   ModalModule.forRoot(),
+  TypeaheadModule,
   NbDialogModule.forChild()
 ]
 @NgModule({
-  declarations: [MySelectComponent, MySmartTableComponent, FormCreatorComponent, ImagesComponent],
+  declarations: [MySelectComponent, MySmartTableComponent, FormCreatorComponent, ImagesComponent, AutoCompleteComponent],
   imports: [
     ...IMPORT_MODULES
   ],

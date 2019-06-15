@@ -7,6 +7,7 @@ import { UtilitiesModule } from '../utilties/utilities.module';
 import { RouterModule } from '@angular/router';
 import { AgmCoreModule } from '@agm/core';
 import { NbLayoutModule } from '@nebular/theme';
+import { TypeaheadModule } from 'ngx-bootstrap';
 
 
 
@@ -20,6 +21,7 @@ const EXPORT_MODULES = [CommonModule,
   AgmCoreModule,
   NbLayoutModule,
   UtilitiesModule,
+  TypeaheadModule
 ]
 
 const IMPORT_MODULES = [CommonModule,
@@ -30,7 +32,8 @@ const IMPORT_MODULES = [CommonModule,
   UtilitiesModule,
   RouterModule,
   AgmCoreModule,
-  NbLayoutModule
+  NbLayoutModule,
+  TypeaheadModule
 ]
 
 

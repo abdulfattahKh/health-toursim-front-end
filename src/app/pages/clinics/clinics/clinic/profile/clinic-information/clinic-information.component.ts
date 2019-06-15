@@ -21,13 +21,11 @@ export class ClinicInformationComponent implements OnInit {
   location: any;
   marker: any;
   constructor(
-    private datePipe:DatePipe,
+    private datePipe: DatePipe,
     private api: MainService,
     private tostr: ToastrService,
     private clinicService: ClinicService
-  ) {
-    console.log('here');
-  };
+  ) { };
   ngOnInit() {
 
     this.init();
@@ -35,14 +33,14 @@ export class ClinicInformationComponent implements OnInit {
       .then().catch();
     this.clinicService.getClinicTypes()
       .then(res => {
-`        this.form.get('clinicTypes').setValue(res);`
+        this.form.get('clinicTypes').setValue(res);
       })
     this.clinicService.getClinicInfo()
       .subscribe(res => {
         this.form.patchValue(res['data'][0]);
         this.location = {
-          latitude:this.form.get('latitude').value,
-          longitude:this.form.get('longitude').value
+          latitude: +this.form.get('latitude').value,
+          longitude:+this.form.get('longitude').value
         }
         this.marker = this.location;
         this.loading = false;
@@ -124,13 +122,13 @@ export class ClinicInformationComponent implements OnInit {
 
   onSubmit() {
     this.clinicService.editClinic(this.form.value)
-    .subscribe(data=>{
-      if(data['success']) {
-        this.tostr.success(data['message'],'success');
-      }
-    },err=>{
-      this.tostr.error(err['message'],'error');
-    })
+      .subscribe(data => {
+        if (data['success']) {
+          this.tostr.success(data['message'], 'success');
+        }
+      }, err => {
+        this.tostr.error(err['message'], 'error');
+      })
   }
 
   placeMarker(position: any) {
@@ -155,5 +153,5 @@ export class ClinicInformationComponent implements OnInit {
   }
 
 
-  
+
 }

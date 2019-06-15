@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, SimpleChanges } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
@@ -13,12 +13,11 @@ export class ImagesComponent implements OnInit {
 
 
 
-  @Input() slides: any[];
+  @Input() slides: any[] = [];
   @Input() files: any[];
   @Input() shown: boolean;
   @Input() isItFile: boolean;
   @Input() fileName: string;
-
   @Output() submit = new EventEmitter();
   @Output() deleteImage = new EventEmitter();
 
@@ -35,8 +34,16 @@ export class ImagesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.slides = [];
     this.uploadPath = environment.upload + "images/" + this.fileName + "/";
   };
+
+  ngOnChanges(changes: SimpleChanges): void {
+    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
+    //Add '${implements OnChanges}' to the class.
+    console.log('here');
+    console.log(this.slides); 
+  }
 
 
   addSlide(files): void {
@@ -45,7 +52,6 @@ export class ImagesComponent implements OnInit {
 
       this.imagesToSend.append("image", files.target.files[i], files.target.files[i].name);
     }
-    this.getImagesUrl(this.imagesToSend);
     this.save();
   }
 
@@ -57,13 +63,8 @@ export class ImagesComponent implements OnInit {
   }
 
 
-  ngOnChanges() { }
-
   removeSlide(index?: number): void {
-    const toRemove = index ? index : this.activeSlideIndex;
-    this.slides.splice(toRemove, 1);
-    this.urls.splice(toRemove, 1);
-    this.deleteImage.emit(this.slides);
+    this.deleteImage.emit(this.activeSlideIndex);
   }
 
   getImagesUrl(files) {

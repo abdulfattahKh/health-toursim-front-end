@@ -30,6 +30,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslationService } from './services/translation.service';
 import { AgmCoreModule } from '@agm/core';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { TypeaheadModule } from 'ngx-bootstrap';
+
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -44,7 +46,7 @@ const Module = [BrowserAnimationsModule,
   CoreModule.forRoot(),
   ToastrModule.forRoot(), // ToastrModule added
   NbDialogModule.forRoot(),
-  
+  TypeaheadModule.forRoot(),
   TranslateModule.forRoot({
     loader: {
       provide: TranslateLoader,

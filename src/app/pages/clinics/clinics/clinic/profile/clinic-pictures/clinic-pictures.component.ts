@@ -10,34 +10,39 @@ import { ToastrService } from 'ngx-toastr';
 export class ClinicPicturesComponent implements OnInit {
 
 
-  images: any[] = [];
-  shown:boolean;
+  slides: any[] = [];
+  shown: boolean;
   constructor(
     private tostr: ToastrService,
     private clinicService: ClinicService
   ) { }
 
   ngOnInit() {
-    this.clinicService.getImages()
-    .subscribe(data=>{
-      if(data['success']) {
-        this.images = data['data'];
-        this.tostr.success(data['message'],'success');
-      }
-    })
   }
 
-  addImages(images) {
-    this.shown = false;
-    this.clinicService.addImages(images)
+  addImages(event) {
+    console.log(event);
+    this.clinicService.addImages(event)
       .subscribe(data => {
-        this.tostr.success(data['message']);
-        this.images.push(...data['images']);
-        this.shown = true;
-      });
+        if (data['success']) {
+          this.slides = [{}];
+          this.slides = data['images'];
+          this.tostr.success(data['message'], 'success');
+        }
+      }, err => {
+        this.tostr.error(err['message'], 'error');
+      })
   }
 
-  deleteImage(images) {
-
-  } 
+  deleteImage(imageIndex) {
+    this.clinicService.deleteImage(this.slides[imageIndex]['id'])
+      .subscribe(data => {
+        if (data['success']) {
+          this.slides.splice(imageIndex);
+          this.tostr.success(data['message'], 'success');
+        }
+      }, err => {
+        this.tostr.error(err['message'], 'error');
+      })
+  }
 }

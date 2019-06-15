@@ -36,6 +36,22 @@ export class ClinicService {
     })
   }
 
+
+  getAllTypes() {
+    return new Promise((resolve,reject)=>{
+      this.api.get('clinics/clinicTypes')
+      .subscribe(data=>{
+        if(data['success']) {
+          resolve(data['data']);
+        } else{
+          reject(false);
+        }
+      },err=>{
+        reject(false);
+      })
+    })
+  }
+
   getClinicDescription() {
     return new Promise((resolve, reject) => {
       this.api.get('clinics/getDescreption/' + this.clinicId)
@@ -147,7 +163,9 @@ export class ClinicService {
   getImages() {
     return this.api.get('clinics/deleteImage/' + this.clinicId);
   }
-
-
+  
+  deleteImage(imageId) {
+    return this.api.delete('clinics/deleteImage',imageId);
+  }
 
 }

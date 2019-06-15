@@ -52,7 +52,7 @@ export class MainService {
     else {
 
     }
-    return this.http.delete<{ success: boolean, errorCode: number, message: string }>(this.api + name + '\\' + id, { headers: this.header });
+    return this.http.delete<{ success: boolean, errorCode: number, message: string }>(this.api + name + '/' + id, { headers: this.header });
   }
 
 
