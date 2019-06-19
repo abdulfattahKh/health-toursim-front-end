@@ -18,10 +18,14 @@ export class ClinicPicturesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.clinicService.getClinicImages()
+      .subscribe(data => {
+        this.slides = [{}];
+        this.slides = data['data']
+      })
   }
 
   addImages(event) {
-    console.log(event);
     this.clinicService.addImages(event)
       .subscribe(data => {
         if (data['success']) {

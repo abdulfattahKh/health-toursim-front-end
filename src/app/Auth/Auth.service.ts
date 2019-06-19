@@ -73,9 +73,9 @@ export class AuthService implements OnInit {
           this.expiresIn = data.expiresIn;
           this.user = data.user;
           this.userId = data.user.id;
-          this.timer = setTimeout(() => {
-            this.logOut();
-          }, data.expiresIn * 1000);
+          // this.timer = setTimeout(() => {
+          //   this.logOut();
+          // }, data.expiresIn * 1000);
           const now = new Date();
           const expiredTime = new Date(now.getTime() + data.expiresIn * 1000);
           this.storeTheToken(data.token, expiredTime, data.user);

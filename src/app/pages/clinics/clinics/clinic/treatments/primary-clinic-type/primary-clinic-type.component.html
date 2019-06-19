@@ -1,0 +1,24 @@
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">primary</th>
+      <th scope="col">clinic type</th>
+      <th scope="col">actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let spec of clinicSpecializations ; let i = index">
+      <th scope="row">1</th>
+      <td>{{spec.name}}</td>
+      <td>
+        <input [checked] ='spec.is_primary' type="checkbox" nbInput size="small" shape="semi-round"
+          (change)="primary(spec,i)">
+      </td>
+      <td>
+        <button nbButton status="info" (click)="delete(spec, i )">delete</button>
+      </td>
+
+    </tr>
+  </tbody>
+</table>

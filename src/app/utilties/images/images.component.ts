@@ -35,6 +35,7 @@ export class ImagesComponent implements OnInit {
 
   ngOnInit() {
     this.slides = [];
+    console.log(this.fileName);
     this.uploadPath = environment.upload + "images/" + this.fileName + "/";
   };
 

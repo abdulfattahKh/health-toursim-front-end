@@ -11,8 +11,7 @@ export class MainService {
   api = environment.api;
   header = new HttpHeaders();
   constructor(
-    private http: HttpClient,
-    private AuthService: AuthService
+    private http: HttpClient
   ) {
 
   }

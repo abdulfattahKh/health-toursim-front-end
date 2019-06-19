@@ -14,10 +14,13 @@ import { CurrencyComponent } from './profile/currency/currency.component';
 import { FormsModule } from '@angular/forms';
 import { UtilitiesModule } from '../../../../utilties/utilities.module';
 import { TypeaheadModule } from 'ngx-bootstrap';
+import { ClinicsTreatmentComponent } from './treatments/clinics-treatment/clinics-treatment.component';
+import { TreatmentComponent } from './treatments/treatment/treatment.component';
+import { PrimaryClinicTypeComponent } from './treatments/primary-clinic-type/primary-clinic-type.component';
 
 
 @NgModule({
-  declarations: [ClinicComponent, ProfileComponent, TreatmentsComponent, StuffComponent, ReviewsComponent, ClinicInformationComponent, DescriptionComponent, ClinicPicturesComponent, CurrencyComponent],
+  declarations: [ClinicComponent, ProfileComponent, TreatmentsComponent, StuffComponent, ReviewsComponent, ClinicInformationComponent, DescriptionComponent, ClinicPicturesComponent, CurrencyComponent, ClinicsTreatmentComponent, TreatmentComponent, PrimaryClinicTypeComponent],
   imports: [
     ThemeModule,
     SharedModule,

@@ -103,6 +103,7 @@ export class ClinicInformationComponent implements OnInit {
     this.clinicService.getClinicTypes()
       .then(types => {
         this.form.get('clinicTypes').setValue(types);
+        this.form.get('clinicTypes').updateValueAndValidity();
       })
   }
   init() {

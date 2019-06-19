@@ -1,0 +1,22 @@
+
+
+.form-control {
+  height: 38px;
+}
+
+:host>>>.card.customClass,
+.card.customClass .card-header,
+.panel.customClass {
+  background-color: #5bc0de;
+  color: #000;
+}
+
+:host>>>.panel.customClass .panel-body {
+  background-color: #337aa7;
+}
+
+.nb-theme-corporate .btn {
+    color: black !important;
+    text-transform: capitalize;
+    font-weight: 400;
+}
