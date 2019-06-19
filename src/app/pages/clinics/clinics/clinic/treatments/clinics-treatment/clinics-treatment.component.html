@@ -1,0 +1,52 @@
+<accordion [formGroup]="formGroup">
+
+  <accordion-group *ngFor="let item of obj | keyvalue" [heading]="item.key" [panelClass]="customClass"
+    [formArrayName]="item.key" class="mb-2">
+    <div class="row text-center mb-4">
+      <div class="col-3">
+        <h6>name</h6>
+      </div>
+      <div class="col-2">
+        <h6>min price</h6>
+      </div>
+      <div class="col-2">
+        <h6>max price</h6>
+      </div>
+      <div class="col-2">
+        <h6>duration</h6>
+      </div>
+      <div class="col-2">
+        <h6>bookable</h6>
+      </div>
+    </div>
+    <div *ngFor="let col of formGroup.get(item.key).controls;let i = index">
+      <div [formGroupName]="i" class="mb-4">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-3">
+            <input type="text" nbInput fullWidth shape="semi-round" (change)="changeValue(item.key,i)"
+              formControlName="name" placeholder="Item name">
+          </div>
+          <div class="col-2">
+            <input type="number" nbInput fullWidth shape="semi-round" (change)="changeValue(item.key,i)"
+              formControlName="min_price" placeholder="min_price">
+          </div>
+          <div class="col-2">
+            <input type="number" nbInput fullWidth shape="semi-round" (change)="changeValue(item.key,i)"
+              formControlName="max_price" placeholder="max_price">
+          </div>
+          <div class="col-2">
+            <input type="number" nbInput fullWidth shape="semi-round" (change)="changeValue(item.key,i)"
+              formControlName="duration" placeholder="duration">
+          </div>
+          <div class="col-2">
+            <input type="checkbox" nbInput fullWidth shape="semi-round" (change)="changeValue(item.key,i)"
+              formControlName="bookable" placeholder="bookable">
+          </div>
+          <div class="col-1">
+            <i style="font-size: 24px" class="nb-trash" (click)="deleteProcedure(item.key , i)"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </accordion-group>
+</accordion>

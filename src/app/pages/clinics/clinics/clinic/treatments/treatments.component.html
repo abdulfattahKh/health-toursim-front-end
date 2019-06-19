@@ -6,13 +6,14 @@
   </div>
   <div class="card-body">
     <div class="row">
-      <div class="col-5">
+      <div class="col-3">
         <nb-card>
           <nb-card-header class="border border-bottom">
             <h6>Search and add treatments you wish to sell</h6>
           </nb-card-header>
           <nb-card-body>
-            <auto-complete (itemsResult) = "setProceduresItems($event)" (onSelectItem)="onSelectTreatment($event)" title="search for a new treatment">
+            <auto-complete (itemsResult)="setProceduresItems($event)" (onSelectItem)="onSelectTreatment($event)"
+              title="search for a new treatment">
             </auto-complete>
 
             <h6 class="my-4">
@@ -21,28 +22,49 @@
             <label for="specializations">{{
                 "specializations" | translate
               }}</label>
-            <ng-select 
-            [items]="specializations" 
-            bindLabel="name" 
-            bindValue="spec_id" 
-            (change) = "onSelecteSpecialization($event)"
-            appendTo="body">
-          </ng-select>
-            <nb-card size="medium" class="my-4"> 
+            <ng-select [items]="specializations" bindLabel="name" bindValue="spec_id"
+              (change)="onSelecteSpecialization($event)" appendTo="body">
+            </ng-select>
+            <nb-card size="medium" class="my-4">
               <nb-card-header>
-                Some fruits
+                <h6>Treatments Found</h6>
               </nb-card-header>
               <nb-list>
-                <nb-list-item *ngFor="let proc of ProceduresItems">
-                  {{ proc.name }}
+                <nb-list-item *ngFor="let proc of ProceduresItems;">
+                  <div class="d-flex justify-content-between">
+                    <span>{{ proc.name }}</span>
+                    <i class="ion-ios-plus" (click)="addTreatment(proc)"></i>
+                  </div>
+
                 </nb-list-item>
               </nb-list>
             </nb-card>
           </nb-card-body>
         </nb-card>
       </div>
-      <div class="col-7">
-        your clincis treatemnt
+      <div class="col-9">
+        <nb-card>
+          <nb-card-header>
+            Your clinic's treatments
+          </nb-card-header>
+          <nb-card-body>
+            <div [nbSpinner]="loading" nbSpinnerStatus="danger" *ngIf="!loading" class="mb-3">
+              <clinic-treatment [items]="procedures" [FORM]="Form"></clinic-treatment>
+            </div>
+          </nb-card-body>
+        </nb-card>
+
+        <nb-card>
+          <nb-card-header>
+            Primary clinic type
+            <p class="mt-2">Select the clinic type that best matches your clinic</p>
+          </nb-card-header>
+          <nb-card-body>
+            <div [nbSpinner]="loading1" nbSpinnerStatus="danger" *ngIf="!loading1" class="mb-3">
+              <primary-clinic-type [clinicSpecializations]="clinicSpecializations"></primary-clinic-type>
+            </div>
+          </nb-card-body>
+        </nb-card>
       </div>
     </div>
   </div>

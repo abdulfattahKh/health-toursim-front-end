@@ -45,6 +45,7 @@
     "@angular/platform-browser": "^7.2.11",
     "@angular/platform-browser-dynamic": "^7.2.11",
     "@angular/router": "^7.2.11",
+    "@fortawesome/angular-fontawesome": "^0.4.0",
     "@nebular/auth": "3.4.2",
     "@nebular/bootstrap": "3.4.2",
     "@nebular/security": "3.4.2",

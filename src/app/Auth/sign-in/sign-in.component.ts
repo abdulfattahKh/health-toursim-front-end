@@ -4,6 +4,7 @@ import { AuthService } from "../Auth.service";
 import { EventEmitter } from "events";
 import { Router } from "@angular/router";
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 @Component({
   selector: "app-sign-in",
   templateUrl: "./sign-in.component.html",
@@ -16,6 +17,7 @@ export class SignInComponent implements OnInit {
   message: string;
   ClassStyle: string;
   title: string;
+  subscriber:Subscription = new Subscription();
   mediumRegex = new RegExp(
     "^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{8,})"
   );
@@ -33,7 +35,7 @@ export class SignInComponent implements OnInit {
       email: "abdulfattah.khudari@gmail.com",
       password: "abdulfattah0952432706"
     });
-    this.authService.SignIn.subscribe(response => {
+    let signin = this.authService.SignIn.subscribe(response => {
       if (response) {
         this.signedIn = true;
         this.ClassStyle = "success";
@@ -46,9 +48,11 @@ export class SignInComponent implements OnInit {
         this.signedIn = false;
         this.ClassStyle = "warning";
         this.message = "either the email or the password is not correct";
-        this.toster.success(this.message);
+        this.toster.error(this.message);
       }
     });
+
+    this.subscriber.add(signin);
 
     /*this.authService.fillSignIn.subscribe(
       (user: { email: string; password: string }) => {
@@ -82,4 +86,8 @@ export class SignInComponent implements OnInit {
   }
 
   test() { }
+
+  ngOnDestroy(): void {
+    this.subscriber.unsubscribe();
+  }
 }

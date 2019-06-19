@@ -6,10 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MainService } from '../../services/main.service';
 import { LocalDataSource } from 'ng2-smart-table';
-import { NbDialogService } from '@nebular/theme';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal/public_api';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { promise } from 'selenium-webdriver';
 import { FieldsService } from '../../services/fields.service';
 @Component({
   selector: 'my-smart-table',
@@ -36,7 +33,6 @@ export class MySmartTableComponent implements OnInit {
   loading: boolean = false;
   actions: any[] = [];
   source: LocalDataSource;
-  deleteModalRef: BsModalRef;
   constructor(
     private router: Router,
     private tostr: ToastrService,

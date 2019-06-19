@@ -9,6 +9,7 @@ import {
 } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 @Component({
   selector: "app-sign-up",
   templateUrl: "./sign-up.component.html",
@@ -30,6 +31,7 @@ export class SignUpComponent implements OnInit {
   message: string;
   class: string;
 
+  subscriber: Subscription = new Subscription();
   // strongRegexPassword = new RegExp(
   //   "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
   // );
@@ -44,9 +46,8 @@ export class SignUpComponent implements OnInit {
     this.init();
   }
   onSubmit() {
-    console.log(this.signUpForm);
     this.user = new User(this.signUpForm.value);
-    this.AuthService.signUp(this.user).subscribe(
+    let sub = this.AuthService.signUp(this.user).subscribe(
       data => {
         console.log(data);
         const data1 = data.json();
@@ -64,13 +65,13 @@ export class SignUpComponent implements OnInit {
           this.message = "the email is already exist";
           this.Toastr.error(this.message);
         }
-        console.log(data);
       },
       err => {
         this.success = false;
-        this.Toastr.error('there was an error');
+        this.Toastr.error('there was an error', "error");
       }
     );
+    this.subscriber.add(sub);
   }
 
   init() {
@@ -133,7 +134,7 @@ export class SignUpComponent implements OnInit {
 
   checkEmail(control: FormControl) {
     const promise = new Promise((reslove, rejcet) => {
-      this.AuthService.checkEmail(control.value).subscribe(response => {
+      let sub = this.AuthService.checkEmail(control.value).subscribe(response => {
         const RES = response.json();
         if (!RES.success) {
           reslove({ emailIsUsed: true });
@@ -144,5 +145,9 @@ export class SignUpComponent implements OnInit {
     });
 
     return promise;
+  }
+
+  ngOnDestroy(): void {
+    this.subscriber.unsubscribe();
   }
 }

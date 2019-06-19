@@ -117,7 +117,7 @@ export class ClinicService {
     let dataToSend = {
       ...info,
     }
-    return this.api.post('clinics/editClinic/' + this.clinicId, dataToSend);
+    return this.api.put('clinics/editClinic/' + this.clinicId, dataToSend);
   }
   saveValues(url, data) {
     return this.api.put(url, data);
@@ -166,6 +166,11 @@ export class ClinicService {
   
   deleteImage(imageId) {
     return this.api.delete('clinics/deleteImage',imageId);
+  }
+
+  getClinicImages() {
+    console.log(this.clinicId);
+    return this.api.get('clinics/images/' + this.clinicId);
   }
 
 }
