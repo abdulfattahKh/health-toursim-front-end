@@ -9,16 +9,16 @@ const routes: Routes = [{
   path: '',
   component: PagesComponent,
   children: [
-    {
-      path: 'dashboard',
-      component: DashboardComponent,
-    },
-    {
-      path: '',
-      redirectTo: 'dashboard',
-      pathMatch: 'full',
-    },
-    { path: 'management', canActivate: [AuthGuard], data: ['management'], loadChildren: './managment/managment.module#ManagmentModule' },
+    // {
+    //   path: 'dashboard',
+    //   component: DashboardComponent,
+    // },
+    // {
+    //   path: '',
+    //   redirectTo: 'dashboard',
+    //   pathMatch: 'full',
+    // },
+    // { path: 'management', canActivate: [AuthGuard], data: ['management'], loadChildren: './managment/managment.module#ManagmentModule' },
   ],
 }];
 

@@ -2,7 +2,9 @@
   "button": {
     "yes": "نعم",
     "no": "لا",
-    "save": "حفظ"
+    "save": "حفظ",
+    "delete":"حذف",
+    "add":"اضافة"
   },
   "signIn": {
     "signIn": "تسجيل الدخول",
@@ -64,9 +66,6 @@
     "stuff":"الأعضاء",
     "reviews":"المرجعات",
     "clinic":"العيادة"
-  },
-  "Management": {
-    "management": "الإدارة"
   },
   "Table": {
     "name": "الإسم",

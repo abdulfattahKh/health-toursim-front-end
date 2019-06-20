@@ -40,6 +40,7 @@ const Module = [BrowserAnimationsModule,
   HttpClientModule,
   AppRoutingModule,
 
+  AuthModule,
   NgbModule.forRoot(),
 
   ThemeModule.forRoot(),

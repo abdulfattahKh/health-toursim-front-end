@@ -7,7 +7,7 @@ import { UtilitiesModule } from '../utilties/utilities.module';
 import { RouterModule } from '@angular/router';
 import { AgmCoreModule } from '@agm/core';
 import { NbLayoutModule } from '@nebular/theme';
-import { TypeaheadModule, AccordionModule } from 'ngx-bootstrap';
+import { TypeaheadModule, AccordionModule, AccordionComponent } from 'ngx-bootstrap';
 
 
 

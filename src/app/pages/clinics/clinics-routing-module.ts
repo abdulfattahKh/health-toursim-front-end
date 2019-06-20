@@ -4,7 +4,7 @@ import { ClinicsComponent } from './clinics/clinics.component';
 import { privilegesGuard } from '../../guards/privileges.guard';
 import { ClinicsTableComponent } from './clinics-table/clinics-table.component';
 import { AddClinicComponent } from './clinics/add-clinic/add-clinic.component';
-
+import { AuthGuard } from '../../guards/auth.guard';
 const routes: Routes = [
   {
     path: '',
@@ -36,11 +36,16 @@ const routes: Routes = [
             component: ClinicsTableComponent
           },
           {
-            path:"addClinic",
+            path: "addClinic",
             // canActivate: [privilegesGuard],
             // data: ['addClinic'],
-            component:AddClinicComponent
+            component: AddClinicComponent
           },
+          {
+            path: "editClinic/:id",
+            canActivate: [AuthGuard],
+            loadChildren: "../clinics/clinics/clinic/clinic.module#ClinicModule"
+          }
         ]
       }
     ]

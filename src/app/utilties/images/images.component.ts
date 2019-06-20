@@ -3,6 +3,7 @@ import { environment } from '../../../environments/environment';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { ImagesService } from './images.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'images',
@@ -26,6 +27,7 @@ export class ImagesComponent implements OnInit {
   uploadPath: string;
   activeSlideIndex = 0;
   imagesToSend: FormData = new FormData();
+  subsctiber: Subscription = new Subscription();
   constructor(
     private modalService: NgbModal,
     private tostr: ToastrService,
@@ -35,37 +37,51 @@ export class ImagesComponent implements OnInit {
 
   ngOnInit() {
     this.slides = [];
-    console.log(this.fileName);
+    console.log(this.slides);
     this.uploadPath = environment.upload + "images/" + this.fileName + "/";
   };
 
   ngOnChanges(changes: SimpleChanges): void {
-    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
-    //Add '${implements OnChanges}' to the class.
-    console.log('here');
-    console.log(this.slides); 
   }
 
 
-  addSlide(files): void {
-
-    for (var i = 0; i < files.target.files.length; i++) {
-
-      this.imagesToSend.append("image", files.target.files[i], files.target.files[i].name);
+  addSlide(files: FileList): void {
+    for (var i = 0; i < files.length; i++) {
+      if (this.imagesService.checkImagesType(files[i].type))
+        this.imagesToSend.append('image', files[i], files[i].name);
     }
     this.save();
   }
 
 
   save() {
-    this.submit.emit(this.imagesToSend);
-    this.imagesToSend = new FormData();
-
+    let add = this.imagesService.addImages(this.fileName, this.imagesToSend)
+      .subscribe(images => {
+        if (images['success']) {
+          this.tostr.success('it was added successfuly', 'success');
+          images['images'].forEach(image => {
+            this.slides.push(image);
+          })
+          this.imagesToSend = new FormData();
+        }
+      })
+    this.subsctiber.add(add);
   }
 
 
+
   removeSlide(index?: number): void {
-    this.deleteImage.emit(this.activeSlideIndex);
+    let imageId = this.slides[this.activeSlideIndex]['id'];
+    let delete1 = this.imagesService.deleteImage(this.fileName, imageId)
+      .subscribe(data => {
+        if (data['success']) {
+          this.tostr.success('it was deleted successfuly', 'success');
+          this.slides.splice(this.activeSlideIndex);
+        }
+      }, err => {
+        this.tostr.error('there was a problem', 'error');
+      })
+    this.subsctiber.add(delete1);
   }
 
   getImagesUrl(files) {
@@ -79,5 +95,9 @@ export class ImagesComponent implements OnInit {
         reader.readAsDataURL(file);
       }
     }
+  }
+
+  ngOnDestroy(): void {
+    this.subsctiber.unsubscribe();
   }
 }

@@ -97,9 +97,9 @@ export class AuthService implements OnInit {
     if (!info) return;
     const dateCheck = now.getTime() - info.expiredTime.getTime();
     if (dateCheck < 0) {
-      setTimeout(() => {
-        this.logOut();
-      }, Math.abs(dateCheck));
+      // setTimeout(() => {
+      //   this.logOut();
+      // }, Math.abs(dateCheck));
       this.token = info.token;
       this.user = info.user;
       this.userId = info.user.id;

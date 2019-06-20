@@ -1,5 +1,11 @@
-<ngx-sample-layout>
-  <nb-menu [items]="menu"></nb-menu>
-  {{"clinic" | translate}}
-  <router-outlet></router-outlet>
-</ngx-sample-layout>
+
+<nb-layout>
+  <nb-sidebar [fixed] = 'true' >
+    <nb-menu  [items]="menu"></nb-menu>
+  </nb-sidebar>
+  <nb-layout-column class="colored-column-success">
+    <router-outlet></router-outlet>
+  </nb-layout-column>
+</nb-layout>
+
+

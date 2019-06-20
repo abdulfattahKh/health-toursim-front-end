@@ -2,7 +2,9 @@
   "button": {
     "yes": "Yes",
     "no": "No",
-    "save": "Save"
+    "save": "Save",
+    "delete":"Delete",
+    "add":"Add"
   },
   "signIn": {
     "signIn": "sign In",
@@ -64,9 +66,6 @@
     "stuff":"stuff",
     "reviews":"reviews",
     "clinic":"Clinic"
-  },
-  "Management": {
-    "management": "Management"
   },
   "Table": {
     "name": "Name",
